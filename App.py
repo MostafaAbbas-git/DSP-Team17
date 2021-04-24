@@ -1,14 +1,18 @@
+import math
 import os
 import sys
 from PyQt5 import QtCore, QtWidgets, QtGui, uic
 import logging
 
-""" 
-logging.basicConfig(filename="LoggingFile.log", 
-                    format='%(asctime)s %(message)s', 
+# Create and configure logger
+LOG_FORMAT = "%(levelname)s %(asctime)s - %(message)s"
+logging.basicConfig(filename="FTMIXER.log",
+                    level=logging.DEBUG,
+                    format=LOG_FORMAT,
                     filemode='w')
+logger = logging.getLogger()
 
- """
+
 class FTMixer(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()

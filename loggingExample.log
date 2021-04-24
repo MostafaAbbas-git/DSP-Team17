@@ -1,0 +1,5 @@
+CRITICAL 2021-04-24 21:09:30,671 - #helpppp
+INFO 2021-04-24 21:09:30,671 - quadratic_formula(1, 0, -4)
+DEBUG 2021-04-24 21:09:30,671 - #Compute the discriminant
+DEBUG 2021-04-24 21:09:30,671 - #Compute the two roots
+DEBUG 2021-04-24 21:09:30,671 - #Return the roots
