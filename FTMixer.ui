@@ -377,7 +377,7 @@ background-color: rgb(45, 45, 70);</string>
         </item>
         <item>
          <property name="text">
-          <string>Uniforf phase</string>
+          <string>Uniform phase</string>
          </property>
         </item>
        </widget>
