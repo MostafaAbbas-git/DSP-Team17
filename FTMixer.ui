@@ -456,7 +456,10 @@ font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
          <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>                                30%</string>
+         <string>30%</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -476,7 +479,10 @@ font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
       <item row="20" column="1">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>                               60%</string>
+         <string>60%</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
