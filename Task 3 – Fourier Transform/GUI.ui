@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1184</width>
+    <height>708</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(30, 30, 50);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="1" column="0">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <layout class="QGridLayout" name="img2_layout">
+      <item row="1" column="0">
+       <widget class="QGraphicsView" name="output1_Display"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QGraphicsView" name="selectedDisplay_2"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="image2_label">
+        <property name="styleSheet">
+         <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Image 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="displaySelection_Menu2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(84, 84, 116);
+
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>FT Magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Real component</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Imaginary component</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="img1_layout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="image1_label">
+        <property name="styleSheet">
+         <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Image 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QGraphicsView" name="fixedDisplay_1"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="displaySelection_Menu1">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(84, 84, 116);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>FT Magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Real component</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FT Imaginary component</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QGraphicsView" name="selectedDisplay_1"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2" rowspan="3">
+     <layout class="QGridLayout" name="Output_layout">
+      <item row="23" column="1">
+       <widget class="QLabel" name="output2_label">
+        <property name="text">
+         <string>Output 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="23" column="0">
+       <widget class="QLabel" name="output1_label">
+        <property name="text">
+         <string>Output 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="24" column="0">
+       <widget class="QGraphicsView" name="graphicsView_5"/>
+      </item>
+      <item row="24" column="1">
+       <widget class="QGraphicsView" name="output2_Display"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="Comp1_ImageMenu">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(84, 84, 116);
+color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Image 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Image 2</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="Output_menu">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(84, 84, 116);
+font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Output 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Output 2</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QComboBox" name="Comp2_ImageMenu">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(84, 84, 116);
+color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Image 1 </string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Image 2</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QComboBox" name="Comp2_Menu">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 70);
+</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Real</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Imaginary</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uniform magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uniform phase</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="21" column="0" colspan="2">
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="7" column="1">
+       <widget class="QSlider" name="Comp1_Slider">
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>30</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QSlider" name="Comp2_Slider">
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>60</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="2">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLineEdit" name="Component_2Line">
+        <property name="styleSheet">
+         <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QComboBox" name="Comp1_Menu">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 70);</string>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>Magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Real</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Imaginary</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uniform magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uniforf phase</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="MixerOutputLine">
+        <property name="styleSheet">
+         <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+border-color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string> Mixer output to:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLineEdit" name="Component_1Line">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(30, 30, 50);
+font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 1</string>
+        </property>
+        <property name="maxLength">
+         <number>500</number>
+        </property>
+       </widget>
+      </item>
+      <item row="19" column="0" colspan="2">
+       <layout class="QFormLayout" name="formLayout_3"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="0">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>                                30%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="20" column="0">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="20" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>                               60%</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1184</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">selection-background-color: rgb(67, 67, 75);</string>
+   </property>
+   <widget class="QMenu" name="menuFILE">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+selection-background-color: rgb(8, 8, 8);
+background-color: rgb(50, 50, 70);</string>
+    </property>
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionClear"/>
+   </widget>
+   <addaction name="menuFILE"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Comp1_Slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>967</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>997</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Comp2_Slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_2</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>969</x>
+     <y>306</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1019</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
