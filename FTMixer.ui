@@ -48,10 +48,10 @@ background-color: rgb(30, 30, 50);</string>
     <item row="2" column="0">
      <layout class="QGridLayout" name="img2_layout">
       <item row="1" column="0">
-       <widget class="PlotWidget" name="fixedDisplay_2"/>
+       <widget class="ImageView" name="fixedDisplay_2"/>
       </item>
       <item row="1" column="1">
-       <widget class="PlotWidget" name="selectedDisplay_2"/>
+       <widget class="ImageView" name="selectedDisplay_2"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="image2_label">
@@ -107,7 +107,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="PlotWidget" name="fixedDisplay_1"/>
+       <widget class="ImageView" name="fixedDisplay_1"/>
       </item>
       <item row="0" column="1">
        <widget class="QComboBox" name="displaySelection_Menu1">
@@ -138,7 +138,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="PlotWidget" name="selectedDisplay_1"/>
+       <widget class="ImageView" name="selectedDisplay_1"/>
       </item>
      </layout>
     </item>
@@ -175,10 +175,10 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </spacer>
       </item>
       <item row="24" column="0">
-       <widget class="PlotWidget" name="output1_Display"/>
+       <widget class="ImageView" name="output1_Display"/>
       </item>
       <item row="24" column="1">
-       <widget class="PlotWidget" name="output2_Display"/>
+       <widget class="ImageView" name="output2_Display"/>
       </item>
       <item row="5" column="1">
        <widget class="QComboBox" name="Comp1_ImageMenu">
@@ -295,7 +295,7 @@ background-color: rgb(45, 45, 70);
          <number>100</number>
         </property>
         <property name="value">
-         <number>30</number>
+         <number>0</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -308,7 +308,7 @@ background-color: rgb(45, 45, 70);
          <number>100</number>
         </property>
         <property name="value">
-         <number>60</number>
+         <number>0</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -417,7 +417,7 @@ background-color: rgb(45, 45, 70);</string>
          <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>30%</string>
+         <string>0</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -440,7 +440,7 @@ background-color: rgb(45, 45, 70);</string>
       <item row="20" column="1">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>60%</string>
+         <string>0</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -451,7 +451,7 @@ background-color: rgb(45, 45, 70);</string>
        <widget class="QLabel" name="label_3">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(40, 40, 60);
-font: 14pt &quot;Ubuntu&quot;;</string>
+font: 13pt &quot;Ubuntu&quot;;</string>
         </property>
         <property name="text">
          <string> Mixer output to:</string>
@@ -462,7 +462,7 @@ font: 14pt &quot;Ubuntu&quot;;</string>
        <widget class="QLabel" name="label_4">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(40, 40, 60);
-font: 14pt &quot;Ubuntu&quot;;</string>
+font: 13pt &quot;Ubuntu&quot;;</string>
         </property>
         <property name="text">
          <string> Component 1</string>
@@ -473,7 +473,7 @@ font: 14pt &quot;Ubuntu&quot;;</string>
        <widget class="QLabel" name="label_5">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(40, 40, 60);
-font: 14pt &quot;Ubuntu&quot;;</string>
+font: 13pt &quot;Ubuntu&quot;;</string>
         </property>
         <property name="text">
          <string> Component 2</string>
@@ -490,7 +490,7 @@ font: 14pt &quot;Ubuntu&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -565,9 +565,10 @@ background-color: rgb(50, 50, 70);</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PlotWidget</class>
+   <class>ImageView</class>
    <extends>QGraphicsView</extends>
-   <header>pyqtgraph</header>
+   <header location="global">pyqtgraph</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
