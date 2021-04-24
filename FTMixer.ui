@@ -48,7 +48,7 @@ background-color: rgb(30, 30, 50);</string>
     <item row="2" column="0">
      <layout class="QGridLayout" name="img2_layout">
       <item row="1" column="0">
-       <widget class="QGraphicsView" name="output1_Display"/>
+       <widget class="QGraphicsView" name="fixedDisplay_2"/>
       </item>
       <item row="1" column="1">
        <widget class="QGraphicsView" name="selectedDisplay_2"/>
@@ -175,7 +175,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </spacer>
       </item>
       <item row="24" column="0">
-       <widget class="QGraphicsView" name="graphicsView_5"/>
+       <widget class="QGraphicsView" name="output1_Display"/>
       </item>
       <item row="24" column="1">
        <widget class="QGraphicsView" name="output2_Display"/>
