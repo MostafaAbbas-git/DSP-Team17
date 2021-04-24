@@ -506,20 +506,20 @@ background-color: rgb(50, 50, 70);</string>
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
-    <addaction name="actionOpen"/>
+    <addaction name="Open_Img1"/>
+    <addaction name="Open_Img2"/>
     <addaction name="actionAuto_Save"/>
-    <addaction name="actionPrint_to_PDF"/>
     <addaction name="actionClear"/>
    </widget>
    <addaction name="menuFILE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionOpen">
+  <action name="Open_Img1">
    <property name="text">
-    <string>Open</string>
+    <string>Open Img1</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+O</string>
+    <string>Ctrl+1</string>
    </property>
   </action>
   <action name="actionClear">
@@ -552,6 +552,14 @@ background-color: rgb(50, 50, 70);</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="Open_Img2">
+   <property name="text">
+    <string>Open Img2</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
    </property>
   </action>
  </widget>
