@@ -1,8 +1,14 @@
-
+import os
 import sys
 from PyQt5 import QtCore, QtWidgets, QtGui, uic
+import logging
 
+""" 
+logging.basicConfig(filename="LoggingFile.log", 
+                    format='%(asctime)s %(message)s', 
+                    filemode='w')
 
+ """
 class FTMixer(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
