@@ -48,10 +48,10 @@ background-color: rgb(30, 30, 50);</string>
     <item row="2" column="0">
      <layout class="QGridLayout" name="img2_layout">
       <item row="1" column="0">
-       <widget class="QGraphicsView" name="fixedDisplay_2"/>
+       <widget class="PlotWidget" name="fixedDisplay_2"/>
       </item>
       <item row="1" column="1">
-       <widget class="QGraphicsView" name="selectedDisplay_2"/>
+       <widget class="PlotWidget" name="selectedDisplay_2"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="image2_label">
@@ -59,7 +59,7 @@ background-color: rgb(30, 30, 50);</string>
          <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <property name="text">
-         <string>Image 2</string>
+         <string> Image 2</string>
         </property>
        </widget>
       </item>
@@ -102,12 +102,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
          <string notr="true">font: 75 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <property name="text">
-         <string>Image 1</string>
+         <string> Image 1</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QGraphicsView" name="fixedDisplay_1"/>
+       <widget class="PlotWidget" name="fixedDisplay_1"/>
       </item>
       <item row="0" column="1">
        <widget class="QComboBox" name="displaySelection_Menu1">
@@ -138,7 +138,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QGraphicsView" name="selectedDisplay_1"/>
+       <widget class="PlotWidget" name="selectedDisplay_1"/>
       </item>
      </layout>
     </item>
@@ -175,10 +175,10 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
        </spacer>
       </item>
       <item row="24" column="0">
-       <widget class="QGraphicsView" name="output1_Display"/>
+       <widget class="PlotWidget" name="output1_Display"/>
       </item>
       <item row="24" column="1">
-       <widget class="QGraphicsView" name="output2_Display"/>
+       <widget class="PlotWidget" name="output2_Display"/>
       </item>
       <item row="5" column="1">
        <widget class="QComboBox" name="Comp1_ImageMenu">
@@ -331,16 +331,6 @@ background-color: rgb(45, 45, 70);
         </property>
        </spacer>
       </item>
-      <item row="12" column="0">
-       <widget class="QLineEdit" name="Component_2Line">
-        <property name="styleSheet">
-         <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
-        </property>
-        <property name="text">
-         <string> Component 2</string>
-        </property>
-       </widget>
-      </item>
       <item row="7" column="0">
        <widget class="QComboBox" name="Comp1_Menu">
         <property name="styleSheet">
@@ -380,35 +370,6 @@ background-color: rgb(45, 45, 70);</string>
           <string>Uniform phase</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLineEdit" name="MixerOutputLine">
-        <property name="styleSheet">
-         <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
-border-color: rgb(0, 0, 0);</string>
-        </property>
-        <property name="text">
-         <string> Mixer output to:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLineEdit" name="Component_1Line">
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(30, 30, 50);
-font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
-        </property>
-        <property name="text">
-         <string> Component 1</string>
-        </property>
-        <property name="maxLength">
-         <number>500</number>
-        </property>
        </widget>
       </item>
       <item row="19" column="0" colspan="2">
@@ -486,6 +447,39 @@ font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Mixer output to:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 2</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -496,7 +490,7 @@ font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -513,6 +507,8 @@ background-color: rgb(50, 50, 70);</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
+    <addaction name="actionAuto_Save"/>
+    <addaction name="actionPrint_to_PDF"/>
     <addaction name="actionClear"/>
    </widget>
    <addaction name="menuFILE"/>
@@ -542,7 +538,30 @@ background-color: rgb(50, 50, 70);</string>
     <string>Ctrl+N</string>
    </property>
   </action>
+  <action name="actionPrint_to_PDF">
+   <property name="text">
+    <string>Print to PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionAuto_Save">
+   <property name="text">
+    <string>Auto Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
