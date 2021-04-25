@@ -9,7 +9,7 @@ import cv2 as cv
 import sys
 import os
 import logging
-
+import qimage2ndarray
 
 # Create and configure logger
 LOG_FORMAT = "%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s"
@@ -50,14 +50,18 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.loaded_imgs = [0, 0]
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
-
         ## Connecting Buttons ##
 
         self.actionClear.triggered.connect(lambda: self.clearall())
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
 
-        # Adjusting QtPlotWidgets to only show images
+        self.Comp1_Slider.valueChanged.connect(
+            lambda: self.mixer_panel())  # Component #1 slider
+        self.Comp2_Slider.valueChanged.connect(
+            lambda: self.mixer_panel())  # Component #2 slider
+
+        # Adjusting QtPlotWidgets to show images properly
         for i in range(len(self.displays)):
             self.displays[i].ui.histogram.hide()
             self.displays[i].ui.roiBtn.hide()
@@ -73,27 +77,34 @@ class ImagesMixer(QtWidgets.QMainWindow):
     def make_new_window(self):
         self.new_win = ImagesMixer()
         self.new_win.show()
-        print("self.arrays_list: ", self.arrays_list)
 
     def browse_imgs(self):
         selected_image = QtGui.QFileDialog.getOpenFileNames(
             self, 'Select image', os.getenv('HOME'), "Images (*.png *.xpm *.jpg)")
+
         if len(selected_image[0]) != 2:
             # Showing number of images warning msg and return
             self.number_warning_msg.exec_()
             return self.browse_imgs()
         # Ignore RGB values; converting to greyscale images
-        self.img1_data = cv.cvtColor(
+        self.img1Byte = cv.cvtColor(
             cv.imread(selected_image[0][0]), cv.COLOR_BGR2GRAY)
-        self.img2_data = cv.cvtColor(
+        self.img2Byte = cv.cvtColor(
             cv.imread(selected_image[0][1]), cv.COLOR_BGR2GRAY)
-        self.loaded_imgs = [self.img1_data, self.img2_data]
-        if self.img1_data.shape != self.img2_data.shape:
+
+        self.loaded_imgs = [self.img1Byte, self.img2Byte]
+        if self.img1Byte.shape != self.img2Byte.shape:
             # Showing size warning msg and return
             self.size_warning_msg.exec_()
             return self.browse_imgs()
         else:
-            #Plotting loop
+            ## Calculate and store all fourier components for each image at once to be used later##
+            # self.image1_Allfft[0] -> fft Magnitude of img1
+            # self.image1_Allfft[1] -> fft Phase of img1 .. and so on
+            self.image1_Allfft = self.get_fft(self.loaded_imgs[0])
+            self.image2_Allfft = self.get_fft(self.loaded_imgs[1])
+
+            # Plotting loop
             for i in range(2):
                 self.plotting(self.loaded_imgs[i], self.displays[i])
 
@@ -101,24 +112,46 @@ class ImagesMixer(QtWidgets.QMainWindow):
         viewer.setImage(data.T)
         viewer.show()
 
+    def mixer_panel(self):
+        # index starts from 0 i.e.( 0 -> Output 1)
+        if self.Output_menu.currentIndex() == 0:
+            if self.Comp1_Menu.currentText() == 'Magnitude':
+                # Set comboBox2Menu to Phase automatically
+                self.Comp2_Menu.setCurrentText('Phase')
+                self.slider1_value = (self.Comp1_Slider.value() / 100)
+                self.slider2_value = (self.Comp2_Slider.value() / 100)
+
+                self.magarr = self.slider_limiter(
+                    self.image1_Allfft[0], self.slider1_value)
+                self.phasearr = self.slider_limiter(
+                    self.image1_Allfft[1], self.slider2_value)
+                self.plotting(self.magarr, self.output1_Display)
+
+    def slider_limiter(self, data, slidervalue):
+        temparr = np.array(data)
+        index = int((temparr.size/2) * slidervalue)
+        temparr[0:2, index:temparr.size] = 0
+        returned_array = ifft2(temparr)
+        return returned_array
+
     def get_fft(self, data_array):
         # Fourier transform of given data array
-        self.fft_data = fft2(data_array)
+        fft_data = fft2(data_array)
         # separate the magnitude
-        self.fft_data_mag = np.abs(self.fft_data)
+        fft_data_mag = np.abs(fft_data)
         # separate the phase
-        self.fft_data_phase = np.angle(self.fft_data)
+        fft_data_phase = np.angle(fft_data)
         # separate the real components
-        self.fft_data_real = np.real(self.fft_data)
+        fft_data_real = np.real(fft_data)
         # separate the imaginary components
-        self.fft_data_imag = np.imag(self.fft_data)
+        fft_data_imag = np.imag(fft_data)
         # The Discrete Fourier Transform sample frequencies
-        sample_freq = fftfreq(self.fft_data.size)
+        sample_freq = fftfreq(fft_data.size)
         # list of lists holds all calculated values
-        FT_list = [self.fft_data_mag, self.fft_data_phase,
-                   self.fft_data_real, self.fft_data_imag, sample_freq]
+        FFT_list = [fft_data_mag, fft_data_phase,
+                    fft_data_real, fft_data_imag, sample_freq]
         # return the list of lists
-        return FT_list
+        return FFT_list
 
     def get_ifft(self, data_array):
         return ifft2(data_array)
