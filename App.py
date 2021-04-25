@@ -56,12 +56,13 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
         
-        #connecting Comboboxes of the input displays
+        #connecting Combo boxes of the input displays
         self.displaySelection_Menu1.currentIndexChanged.connect(
             lambda: self.display_component(self.displaySelection_Menu1, self.displays[2], self.image1_Allfft))
         self.displaySelection_Menu2.currentIndexChanged.connect(
             lambda: self.display_component(self.displaySelection_Menu2, self.displays[3], self.image2_Allfft ))
 
+        #connecting the Sliders
         self.Comp1_Slider.valueChanged.connect(
             lambda: self.mixer_panel())  # Component #1 slider
         self.Comp2_Slider.valueChanged.connect(
@@ -124,13 +125,15 @@ class ImagesMixer(QtWidgets.QMainWindow):
         viewer.setImage(data.T)
         viewer.show()
 
-    #menu represents which combobox is used
+    #menu represents which combo box is used
     def display_component(self,menu,display,img_components):
-        
+        #get the index of the selected component from the combo box ,the comps start from index 1
         selected_option = menu.currentIndex()
+        
         if selected_option == 0:
             display.clear()
         else:
+            #get the required component from the fourier components list
             component = img_components[selected_option-1]
             self.plotting(component, display)
         
@@ -175,7 +178,6 @@ class ImagesMixer(QtWidgets.QMainWindow):
         # list of lists holds all calculated values
         FFT_list = [fft_data_mag, fft_data_phase,
                     fft_data_real, fft_data_imag, sample_freq]
-        # FFT_list = np.array(FFT_list)
         # return the list of lists
         return FFT_list
 
