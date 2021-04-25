@@ -490,7 +490,7 @@ font: 13pt &quot;Ubuntu&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -505,16 +505,15 @@ background-color: rgb(50, 50, 70);</string>
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew"/>
-    <addaction name="Open_Img1"/>
-    <addaction name="Open_Img2"/>
-    <addaction name="actionAuto_Save"/>
+    <addaction name="actionNewWindow"/>
+    <addaction name="actionOpenImg1"/>
+    <addaction name="actionOpenImg2"/>
     <addaction name="actionClear"/>
    </widget>
    <addaction name="menuFILE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="Open_Img1">
+  <action name="actionOpenImg1">
    <property name="text">
     <string>Open Img1</string>
    </property>
@@ -530,9 +529,9 @@ background-color: rgb(50, 50, 70);</string>
     <string>Ctrl+C</string>
    </property>
   </action>
-  <action name="actionNew">
+  <action name="actionNewWindow">
    <property name="text">
-    <string>New</string>
+    <string>New Window</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -554,7 +553,7 @@ background-color: rgb(50, 50, 70);</string>
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="Open_Img2">
+  <action name="actionOpenImg2">
    <property name="text">
     <string>Open Img2</string>
    </property>
