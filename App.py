@@ -39,11 +39,15 @@ class ImagesMixer(QtWidgets.QMainWindow):
         # Creating warning msg for image-2 size
         self.size_warning_msg = QMessageBox()
         self.size_warning_msg.setWindowTitle("Error in Image Size")
-        self.size_warning_msg.setText("The 2 images must have the same size")
+        self.size_warning_msg.setText("The 2 images must have the same size!")
         self.size_warning_msg.setIcon(QMessageBox.Warning)
 
-        self.loadImgs = [self.actionOpenImg1, self.actionOpenImg2]
+        self.number_warning_msg = QMessageBox()
+        self.number_warning_msg.setWindowTitle("Error in selected Images ")
+        self.number_warning_msg.setText("You must select two images at once!")
+        self.number_warning_msg.setIcon(QMessageBox.Warning)
 
+        self.loaded_imgs = [0, 0]
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
 
@@ -51,10 +55,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         self.actionClear.triggered.connect(lambda: self.clearall())
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
-
-        self.loadImgs[0].triggered.connect(lambda: self.Open(0))
-        self.loadImgs[1].triggered.connect(lambda: self.Open(1))
-        self.loadImgs[1].setDisabled(True)
+        self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
 
         # Adjusting QtPlotWidgets to only show images
         for i in range(len(self.displays)):
@@ -72,33 +73,33 @@ class ImagesMixer(QtWidgets.QMainWindow):
     def make_new_window(self):
         self.new_win = ImagesMixer()
         self.new_win.show()
+        print("self.arrays_list: ", self.arrays_list)
 
-    def Open(self, index):
-        selected_image = QtGui.QFileDialog.getOpenFileName(
+    def browse_imgs(self):
+        selected_image = QtGui.QFileDialog.getOpenFileNames(
             self, 'Select image', os.getenv('HOME'), "Images (*.png *.xpm *.jpg)")
+        if len(selected_image[0]) != 2:
+            # Showing number of images warning msg and return
+            self.number_warning_msg.exec_()
+            return self.browse_imgs()
+        # Ignore RGB values; converting to greyscale images
+        self.img1_data = cv.cvtColor(
+            cv.imread(selected_image[0][0]), cv.COLOR_BGR2GRAY)
+        self.img2_data = cv.cvtColor(
+            cv.imread(selected_image[0][1]), cv.COLOR_BGR2GRAY)
+        self.loaded_imgs = [self.img1_data, self.img2_data]
+        if self.img1_data.shape != self.img2_data.shape:
+            # Showing size warning msg and return
+            self.size_warning_msg.exec_()
+            return self.browse_imgs()
+        else:
+            #Plotting loop
+            for i in range(2):
+                self.plotting(self.loaded_imgs[i], self.displays[i])
 
-        self.path = selected_image[0]
-        self.imgByte = cv.cvtColor(cv.imread(self.path), cv.COLOR_BGR2GRAY)
-        # shape method return tuple of number of rows, columns, and channels (if the image is color)
-        self.shape = self.imgByte.shape
-        #self.image = self.imageModel(self.path)
-
-        if index == 0:
-            self.Img1_Size = self.shape
-            self.loading(index)
-            self.loadImgs[1].setDisabled(False)
-
-        elif index != 0:
-            if self.shape != self.Img1_Size:
-                # Showing size warning msg
-                self.size_warning_msg.exec_()
-                return
-            else:
-                self.loading(index)
-
-    def loading(self, index):
-        self.displays[index].show()
-        self.displays[index].setImage(self.imgByte.T)
+    def plotting(self, data, viewer):
+        viewer.setImage(data.T)
+        viewer.show()
 
     def get_fft(self, data_array):
         # Fourier transform of given data array
@@ -122,10 +123,10 @@ class ImagesMixer(QtWidgets.QMainWindow):
     def get_ifft(self, data_array):
         return ifft2(data_array)
 
-#Fixed display shouldn't be cleared #################
+# Fixed displays are excluded
     def clearall(self):
-        for i in range(6):
-            self.displays[i].clear()
+        for i in range(4):
+            self.displays[i+2].clear()
 
 
 def main():

@@ -506,16 +506,15 @@ background-color: rgb(50, 50, 70);</string>
      <string>File</string>
     </property>
     <addaction name="actionNewWindow"/>
-    <addaction name="actionOpenImg1"/>
-    <addaction name="actionOpenImg2"/>
+    <addaction name="actionOpenImgs"/>
     <addaction name="actionClear"/>
    </widget>
    <addaction name="menuFILE"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionOpenImg1">
+  <action name="actionOpenImgs">
    <property name="text">
-    <string>Open Img1</string>
+    <string>Open Images</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+1</string>
@@ -559,6 +558,11 @@ background-color: rgb(50, 50, 70);</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+2</string>
+   </property>
+  </action>
+  <action name="actionopen_both">
+   <property name="text">
+    <string>open both</string>
    </property>
   </action>
  </widget>
