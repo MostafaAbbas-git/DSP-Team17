@@ -42,6 +42,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
+        
+        self.actionClear.triggered.connect(lambda: self.clearall())
+
 
         for i in range(len(self.displays)):
             self.displays[i].ui.histogram.hide()
@@ -104,7 +107,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
     def get_ifft (self, data_array):
         return ifft2(data_array)
 
-      
+    def clearall(self):
+        for i in range(6):
+            self.displays[i].clear()      
    
 def main():
     app = QtWidgets.QApplication(sys.argv)
