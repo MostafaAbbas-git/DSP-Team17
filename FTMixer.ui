@@ -72,6 +72,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <item>
          <property name="text">
+          <string>Select Component</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>FT Magnitude</string>
          </property>
         </item>
@@ -115,6 +120,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
          <string notr="true">background-color: rgb(84, 84, 116);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
+        <item>
+         <property name="text">
+          <string>Select Component</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>FT Magnitude</string>
@@ -490,7 +500,7 @@ font: 13pt &quot;Ubuntu&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="styleSheet">

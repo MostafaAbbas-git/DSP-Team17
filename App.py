@@ -55,6 +55,12 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.actionClear.triggered.connect(lambda: self.clearall())
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
+        
+        #connecting Comboboxes of the input displays
+        self.displaySelection_Menu1.currentIndexChanged.connect(
+            lambda: self.display_component(self.displaySelection_Menu1, self.displays[2], self.image1_Allfft))
+        self.displaySelection_Menu2.currentIndexChanged.connect(
+            lambda: self.display_component(self.displaySelection_Menu2, self.displays[3], self.image2_Allfft ))
 
         self.Comp1_Slider.valueChanged.connect(
             lambda: self.mixer_panel())  # Component #1 slider
@@ -101,16 +107,35 @@ class ImagesMixer(QtWidgets.QMainWindow):
             ## Calculate and store all fourier components for each image at once to be used later##
             # self.image1_Allfft[0] -> fft Magnitude of img1
             # self.image1_Allfft[1] -> fft Phase of img1 .. and so on
+            
             self.image1_Allfft = self.get_fft(self.loaded_imgs[0])
             self.image2_Allfft = self.get_fft(self.loaded_imgs[1])
+            
+            # self.image1_Allfft = np.array(self.get_fft(self.loaded_imgs[0]), dtype= object)
+            # self.image2_Allfft = np.array(self.get_fft(self.loaded_imgs[1]), dtype= object)
 
             # Plotting loop
             for i in range(2):
                 self.plotting(self.loaded_imgs[i], self.displays[i])
+                
+        
 
     def plotting(self, data, viewer):
         viewer.setImage(data.T)
         viewer.show()
+
+    #menu represents which combobox is used
+    def display_component(self,menu,display,img_components):
+        
+        selected_option = menu.currentIndex()
+        if selected_option == 0:
+            display.clear()
+        else:
+            component = img_components[selected_option-1]
+            self.plotting(component, display)
+        
+        
+
 
     def mixer_panel(self):
         # index starts from 0 i.e.( 0 -> Output 1)
@@ -150,6 +175,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
         # list of lists holds all calculated values
         FFT_list = [fft_data_mag, fft_data_phase,
                     fft_data_real, fft_data_imag, sample_freq]
+        # FFT_list = np.array(FFT_list)
         # return the list of lists
         return FFT_list
 
