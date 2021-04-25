@@ -162,22 +162,43 @@ class ImagesMixer(QtWidgets.QMainWindow):
         returned_array = ifft2(temparr)
         return returned_array
 
+    # def get_fft(self, data_array):
+    #     # Fourier transform of given data array
+    #     fft_data = fft2(data_array)
+    #     # separate the magnitude
+    #     fft_data_mag = np.abs(fft_data)
+    #     # separate the phase
+    #     fft_data_phase = np.angle(fft_data)
+    #     # separate the real components
+    #     fft_data_real = np.real(fft_data)
+    #     # separate the imaginary components
+    #     fft_data_imag = np.imag(fft_data)
+    #     # The Discrete Fourier Transform sample frequencies
+    #     sample_freq = fftfreq(fft_data.size)
+    #     # list of lists holds all calculated values
+    #     FFT_list = [fft_data_mag, fft_data_phase,
+    #                 fft_data_real, fft_data_imag, sample_freq]
+    #     # return the list of lists
+    #     return FFT_list
+    
     def get_fft(self, data_array):
         # Fourier transform of given data array
         fft_data = fft2(data_array)
+        #shifting the array of data
+        fft_data_shifted= np.fft.fftshift(fft_data)
         # separate the magnitude
-        fft_data_mag = np.abs(fft_data)
+        fft_mag_spectrum = 20*np.log(np.abs(fft_data_shifted))
         # separate the phase
         fft_data_phase = np.angle(fft_data)
         # separate the real components
-        fft_data_real = np.real(fft_data)
+        fft_real_spectrum = 20*np.log(np.real(fft_data_shifted))
         # separate the imaginary components
         fft_data_imag = np.imag(fft_data)
         # The Discrete Fourier Transform sample frequencies
         sample_freq = fftfreq(fft_data.size)
         # list of lists holds all calculated values
-        FFT_list = [fft_data_mag, fft_data_phase,
-                    fft_data_real, fft_data_imag, sample_freq]
+        FFT_list = [fft_mag_spectrum, fft_data_phase,
+                    fft_real_spectrum, fft_data_imag, sample_freq]
         # return the list of lists
         return FFT_list
 
