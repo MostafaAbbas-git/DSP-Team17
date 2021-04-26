@@ -65,9 +65,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
         
         #connecting Combo boxes of the input displays
         self.displaySelection_Menu1.currentIndexChanged.connect(
-            lambda: self.display_component(self.displaySelection_Menu1, self.displays[2], self.image1_Allfft[1]))
+            lambda: self.display_component(self.dropMenu[0], self.displays[2], self.image1_Allfft[1] ))
         self.displaySelection_Menu2.currentIndexChanged.connect(
-            lambda: self.display_component(self.displaySelection_Menu2, self.displays[3], self.image2_Allfft[1] ))
+            lambda: self.display_component(self.dropMenu[1], self.displays[3], self.image2_Allfft[1] ))
 
         #connecting the Sliders
         self.Comp1_Slider.valueChanged.connect(
@@ -192,10 +192,11 @@ class ImagesMixer(QtWidgets.QMainWindow):
         sample_freq = fftfreq(fft_data.size)
         
         FFT_mixinglist = [fft_data_mag, fft_data_phase,
-                    fft_data_real, fft_data_imag, sample_freq]
+                          fft_data_real, fft_data_imag, sample_freq]
         # list of lists holds all calculated values
         FFT_displayComponents = [fft_mag_spectrum, fft_data_phase,
-                    fft_real_spectrum, fft_data_imag, sample_freq]
+                                 fft_real_spectrum, fft_data_imag, sample_freq]
+        
         FFT_list = [FFT_mixinglist,FFT_displayComponents]
         '''
         return a list that contains 2 lists
