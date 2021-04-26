@@ -48,11 +48,18 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.number_warning_msg.setIcon(QMessageBox.Warning)
 
         self.loaded_imgs = [0, 0]
+        
+        self.slider = [self.Comp1_Slider, self.Comp2_Slider]
+        
+        self.dropMenu = [self.displaySelection_Menu1, self.displaySelection_Menu2, self.Output_menu, 
+                         self.Comp1_ImageMenu, self.Comp2_ImageMenu, self.Comp1_Menu, self.Comp2_Menu]
+        
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
         ## Connecting Buttons ##
 
         self.actionClear.triggered.connect(lambda: self.clearall())
+        self.Close.triggered.connect(lambda: self.close())
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
         
@@ -203,8 +210,16 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
 # Fixed displays are excluded
     def clearall(self):
+        self.default()
         for i in range(4):
             self.displays[i+2].clear()
+            
+    def default (self):
+        for i in range(7):
+            self.dropMenu[i].setCurrentIndex(0)
+            
+        for i in range(2):
+            self.slider[i].setProperty("value", 50)
 
 
 def main():

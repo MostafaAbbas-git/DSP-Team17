@@ -518,6 +518,7 @@ background-color: rgb(50, 50, 70);</string>
     <addaction name="actionNewWindow"/>
     <addaction name="actionOpenImgs"/>
     <addaction name="actionClear"/>
+    <addaction name="Close"/>
    </widget>
    <addaction name="menuFILE"/>
   </widget>
@@ -573,6 +574,14 @@ background-color: rgb(50, 50, 70);</string>
   <action name="actionopen_both">
    <property name="text">
     <string>open both</string>
+   </property>
+  </action>
+  <action name="Close">
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
    </property>
   </action>
  </widget>
