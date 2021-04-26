@@ -1,16 +1,13 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from PyQt5.QtWidgets import QFileDialog, QGraphicsScene, QMessageBox
-from pyqtgraph import PlotWidget, PlotItem
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QSettings
 from autologging import logged, TRACE, traced
-from numpy.fft import fft2, ifft2, fftfreq
+from numpy.fft import fft2, ifft2, fftfreq, fftshift
 import numpy as np
 import cv2 as cv
 import sys
 import os
 import logging
-import qimage2ndarray
-
 # Create and configure logger
 LOG_FORMAT = "%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s"
 logging.basicConfig(filename="ImagesMixer.log",
@@ -47,6 +44,11 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.number_warning_msg.setText("You must select two images at once!")
         self.number_warning_msg.setIcon(QMessageBox.Warning)
 
+        self.Comp1_Slider.setMinimum(0)
+        self.Comp1_Slider.setMaximum(100)
+        self.Comp2_Slider.setMinimum(0)
+        self.Comp2_Slider.setMaximum(100)
+
         self.loaded_imgs = [0, 0]
         
         self.slider = [self.Comp1_Slider, self.Comp2_Slider]
@@ -62,14 +64,14 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.Close.triggered.connect(lambda: self.close())
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
-        
-        #connecting Combo boxes of the input displays
+
+        # connecting Combo boxes of the input displays
         self.displaySelection_Menu1.currentIndexChanged.connect(
             lambda: self.display_component(self.dropMenu[0], self.displays[2], self.image1_Allfft[1] ))
         self.displaySelection_Menu2.currentIndexChanged.connect(
             lambda: self.display_component(self.dropMenu[1], self.displays[3], self.image2_Allfft[1] ))
 
-        #connecting the Sliders
+        # connecting the Sliders
         self.Comp1_Slider.valueChanged.connect(
             lambda: self.mixer_panel())  # Component #1 slider
         self.Comp2_Slider.valueChanged.connect(
@@ -113,39 +115,30 @@ class ImagesMixer(QtWidgets.QMainWindow):
             return self.browse_imgs()
         else:
             ## Calculate and store all fourier components for each image at once to be used later##
-            # self.image1_Allfft[0] -> fft Magnitude of img1
-            # self.image1_Allfft[1] -> fft Phase of img1 .. and so on
-            
-            self.image1_Allfft = self.get_fft(self.loaded_imgs[0]) #contains 2 lists
-            self.image2_Allfft = self.get_fft(self.loaded_imgs[1]) #contains 2 lists
-            
-            # self.image1_Allfft = np.array(self.get_fft(self.loaded_imgs[0]), dtype= object)
-            # self.image2_Allfft = np.array(self.get_fft(self.loaded_imgs[1]), dtype= object)
+            self.image1_Allfft = self.get_fft(self.loaded_imgs[0])
+            self.image2_Allfft = self.get_fft(self.loaded_imgs[1])
+
 
             # Plotting loop
             for i in range(2):
                 self.plotting(self.loaded_imgs[i], self.displays[i])
-                
-        
 
     def plotting(self, data, viewer):
         viewer.setImage(data.T)
         viewer.show()
 
-    #menu represents which combo box is used
-    def display_component(self,menu,display,img_components):
-        #get the index of the selected component from the combo box ,the comps start from index 1
-        selected_option = menu.currentIndex()
         
+    def display_component(self, menu, display, img_components):
+        # menu represents which combo box is used
+        # get the index of the selected component from the combo box ,the comps start from index 1
+        selected_option = menu.currentIndex()
+
         if selected_option == 0:
             display.clear()
         else:
-            #get the required component from the fourier components list
+            # get the required component from the fourier components list
             component = img_components[selected_option-1]
             self.plotting(component, display)
-        
-        
-
 
     def mixer_panel(self):
         # index starts from 0 i.e.( 0 -> Output 1)
@@ -153,24 +146,39 @@ class ImagesMixer(QtWidgets.QMainWindow):
             if self.Comp1_Menu.currentText() == 'Magnitude':
                 # Set comboBox2Menu to Phase automatically
                 self.Comp2_Menu.setCurrentText('Phase')
+
                 self.slider1_value = (self.Comp1_Slider.value() / 100)
                 self.slider2_value = (self.Comp2_Slider.value() / 100)
 
-                self.magarr = self.slider_limiter(
-                    self.image1_Allfft[0], self.slider1_value)
-                self.phasearr = self.slider_limiter(
-                    self.image1_Allfft[1], self.slider2_value)
-                self.plotting(self.magarr, self.output1_Display)
+                self.output_for_plot = self.phase_mag_slicer(
+                    self.image1_Allfft[0], self.slider1_value, self.image2_Allfft[1], self.slider2_value)
+                self.plotting(self.output_for_plot, self.output1_Display)
 
-    def slider_limiter(self, data, slidervalue):
-        temparr = np.array(data)
-        index = int((temparr.size/2) * slidervalue)
-        temparr[0:2, index:temparr.size] = 0
-        returned_array = ifft2(temparr)
-        return returned_array
+    ''' 
+    Current issues:
+    1- maybe slicing using 0 value isn't the correct method
+    '''
 
-    
-    
+    def phase_mag_slicer(self, mag_array, slider1value,  phase_array, slider2value):
+        # mag_array is a list (of length 295) of lists (each of length 236)
+        max_length = len(mag_array[0])  # = 236
+
+        temp_mag_array = mag_array
+        mag_index = int(max_length * slider1value)
+        temp_mag_array[0:, mag_index:max_length] = 0
+
+        temp_phase_array = phase_array
+        phase_index = int(max_length * slider2value)
+        temp_phase_array[0:, phase_index:max_length] = 0
+
+        polar_multiply = np.multiply(
+            temp_mag_array, np.exp(1j*temp_phase_array))
+
+        returned_arr = np.real(ifft2(polar_multiply))
+        returned_arr = np.abs(returned_arr)
+
+        return returned_arr
+
     def get_fft(self, data_array):
         # Fourier transform of given data array
         fft_data = fft2(data_array)
@@ -205,9 +213,6 @@ class ImagesMixer(QtWidgets.QMainWindow):
         that are neaded in the component display.
         '''
         return FFT_list
-
-    def get_ifft(self, data_array):
-        return ifft2(data_array)
 
     # Fixed displays are excluded
     def clearall(self):
