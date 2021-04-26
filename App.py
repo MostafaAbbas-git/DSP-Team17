@@ -208,12 +208,13 @@ class ImagesMixer(QtWidgets.QMainWindow):
     def get_ifft(self, data_array):
         return ifft2(data_array)
 
-# Fixed displays are excluded
+    # Fixed displays are excluded
     def clearall(self):
         self.default()
         for i in range(4):
             self.displays[i+2].clear()
-            
+    
+    # setting the default values        
     def default (self):
         for i in range(7):
             self.dropMenu[i].setCurrentIndex(0)

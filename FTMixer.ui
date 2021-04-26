@@ -199,6 +199,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <item>
          <property name="text">
+          <string>Choose an image</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Image 1</string>
          </property>
         </item>
@@ -216,6 +221,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
 background-color: rgb(84, 84, 116);
 font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
+        <item>
+         <property name="text">
+          <string>Choose output window</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>Output 1</string>
@@ -237,6 +247,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <item>
          <property name="text">
+          <string>Choose an image</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Image 1 </string>
          </property>
         </item>
@@ -254,6 +269,11 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
 background-color: rgb(45, 45, 70);
 </string>
         </property>
+        <item>
+         <property name="text">
+          <string>Select Component</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>Magnitude</string>
@@ -350,6 +370,11 @@ background-color: rgb(45, 45, 70);</string>
         <property name="editable">
          <bool>false</bool>
         </property>
+        <item>
+         <property name="text">
+          <string>Select Component</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>Magnitude</string>
