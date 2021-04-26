@@ -1,0 +1,688 @@
+TRACE:App.py,23:__main__.ImagesMixer.__init__:CALL *() **{}
+DEBUG:uiparser.py,1015:PyQt5.uic.uiparser.parse:UI version is 4.0
+DEBUG:uiparser.py,864:PyQt5.uic.uiparser.classname:uiname is MainWindow
+DEBUG:uiparser.py,824:PyQt5.uic.uiparser.createUserInterface:toplevel widget is ImagesMixer
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property geometry
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property windowTitle
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImagesMixer MainWindow
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QWidget centralwidget
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property pyuicMargins
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QGridLayout gridLayout_2
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QGridLayout img2_layout
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView fixedDisplay_2
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView fixedDisplay_2
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView selectedDisplay_2
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView selectedDisplay_2
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel image2_label
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel image2_label
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox displaySelection_Menu2
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox displaySelection_Menu2
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,116:PyQt5.uic.uiparser.popLayout:pop layout QGridLayout img2_layout
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QGridLayout img1_layout
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel image1_label
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel image1_label
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView fixedDisplay_1
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView fixedDisplay_1
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox displaySelection_Menu1
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox displaySelection_Menu1
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView selectedDisplay_1
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView selectedDisplay_1
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,116:PyQt5.uic.uiparser.popLayout:pop layout QGridLayout img1_layout
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QGridLayout Output_layout
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel output2_label
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel output2_label
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel output1_label
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel output1_label
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView output1_Display
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView output1_Display
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push ImageView output2_Display
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImageView output2_Display
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox Comp1_ImageMenu
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox Comp1_ImageMenu
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox Output_menu
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox Output_menu
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox Comp2_ImageMenu
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox Comp2_ImageMenu
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox Comp2_Menu
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox Comp2_Menu
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property maximum
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property value
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property orientation
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QSlider Comp1_Slider
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QSlider Comp1_Slider
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property maximum
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property value
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property orientation
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QSlider Comp2_Slider
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QSlider Comp2_Slider
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property editable
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QComboBox Comp1_Menu
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QComboBox Comp1_Menu
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QFormLayout formLayout_3
+DEBUG:uiparser.py,116:PyQt5.uic.uiparser.popLayout:pop layout QFormLayout formLayout_3
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property frameShape
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property frameShadow
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QFrame frame
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QFrame frame
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property alignment
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel label
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel label
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property alignment
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel label_2
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel label_2
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel label_3
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel label_3
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel label_4
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel label_4
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QLabel label_5
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QLabel label_5
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QWidget object at 0x000001D3659B6550>
+DEBUG:uiparser.py,116:PyQt5.uic.uiparser.popLayout:pop layout QGridLayout Output_layout
+DEBUG:uiparser.py,116:PyQt5.uic.uiparser.popLayout:pop layout QGridLayout gridLayout_2
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QWidget centralwidget
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <__main__.ImagesMixer object at 0x000001D3659B61F0>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property geometry
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QMenuBar menubar
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property styleSheet
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property title
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QMenu menuFILE
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QMenu menuFILE
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <PyQt5.QtWidgets.QMenuBar object at 0x000001D3696541F0>
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QMenuBar menubar
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <__main__.ImagesMixer object at 0x000001D3659B61F0>
+DEBUG:uiparser.py,108:PyQt5.uic.uiparser.push:push QStatusBar statusbar
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget QStatusBar statusbar
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget <__main__.ImagesMixer object at 0x000001D3659B61F0>
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property shortcut
+DEBUG:properties.py,400:PyQt5.uic.properties.setProperties:setting property text
+DEBUG:uiparser.py,122:PyQt5.uic.uiparser.popWidget:pop widget ImagesMixer MainWindow
+DEBUG:uiparser.py,130:PyQt5.uic.uiparser.popWidget:new topwidget None
+DEBUG:uiparser.py,839:PyQt5.uic.uiparser.addActions:add action actionNewWindow to menuFILE
+DEBUG:uiparser.py,839:PyQt5.uic.uiparser.addActions:add action actionOpenImgs to menuFILE
+DEBUG:uiparser.py,839:PyQt5.uic.uiparser.addActions:add action actionClear to menuFILE
+DEBUG:uiparser.py,839:PyQt5.uic.uiparser.addActions:add action menuFILE to menubar
+INFO:App.py,26:__main__.ImagesMixer.__init__:initialized
+TRACE:App.py,23:__main__.ImagesMixer.__init__:RETURN None
+TRACE:App.py,90:__main__.ImagesMixer.browse_imgs:CALL *() **{}
+TRACE:App.py,175:__main__.ImagesMixer.get_fft:CALL *(array([[223, 223, 223, ..., 218, 218, 217],
+       [223, 223, 223, ..., 217, 217, 217],
+       [224, 224, 224, ..., 217, 217, 217],
+       ...,
+       [ 42,  58,  26, ...,  58,  90,  57],
+       [ 53,  47,  17, ...,  99,  90,  54],
+       [ 53,  35,  52, ...,  88,  59,  50]], dtype=uint8),) **{}
+TRACE:App.py,175:__main__.ImagesMixer.get_fft:RETURN [array([[143.81213797, 134.38334999, 144.05615897, ..., 145.74354727,
+        143.95320956, 135.55269755],
+       [138.05216832, 133.87755177, 131.37993869, ..., 141.49284234,
+        138.57635482, 145.10062258],
+       [114.63492515, 132.56905869, 124.87825632, ..., 142.6620611 ,
+        134.20969951, 147.93558163],
+       ...,
+       [114.63492515, 147.93558163, 134.20969951, ..., 125.61559864,
+        124.87825632, 132.56905869],
+       [138.05216832, 145.10062258, 138.57635482, ..., 139.81463298,
+        131.37993869, 133.87755177],
+       [143.81213797, 135.55269755, 143.95320956, ..., 151.79581915,
+        144.05615897, 134.38334999]]), array([[ 2.98290624,  0.21884061,  2.43237188, ...,  2.02285296,
+        -0.45375018, -2.90214505],
+       [-1.07670649, -2.91670927,  1.15467081, ..., -0.89473772,
+         1.289669  , -0.27220426],
+       [-2.12667793,  2.14104731, -0.22427524, ...,  2.00545087,
+        -1.41141109, -2.83256001],
+       ...,
+       [ 2.12667793,  2.83256001,  1.41141109, ..., -3.06020061,
+         0.22427524, -2.14104731],
+       [ 1.07670649,  0.27220426, -1.289669  , ..., -2.71784125,
+        -1.15467081,  2.91670927],
+       [-2.98290624,  2.90214505,  0.45375018, ..., -0.3892339 ,
+        -2.43237188, -0.21884061]]), array([[         nan, 133.90056573,          nan, ...,          nan,
+        141.8195279 ,          nan],
+       [123.1309343 ,          nan, 113.26400186, ..., 132.11590604,
+        112.93326368, 144.35033588],
+       [         nan,          nan, 124.37098832, ...,          nan,
+         97.39632647,          nan],
+       ...,
+       [         nan,          nan,  97.39632647, ...,          nan,
+        124.37098832,          nan],
+       [123.1309343 , 144.35033588, 112.93326368, ...,          nan,
+        113.26400186,          nan],
+       [         nan,          nan, 141.8195279 , ..., 150.2409133 ,
+                 nan, 133.90056573]]), array([[ 209.67971347,  179.78491272,  874.74722809, ..., 1314.63905978,
+        -585.7531605 , -208.22933355],
+       [-875.88103969, -180.05480736,  651.83808187, ..., -921.71718924,
+         981.193513  , -380.48575812],
+       [-262.05726618,  636.63668476, -114.50680721, ..., 1136.27129967,
+        -810.56294685, -495.96377163],
+       ...,
+       [ 262.05726618,  495.96377163,  810.56294685, ...,  -43.43205791,
+         114.50680721, -636.63668476],
+       [ 875.88103969,  380.48575812, -981.193513  , ..., -446.75689651,
+        -651.83808187,  180.05480736],
+       [-209.67971347,  208.22933355,  585.7531605 , ..., -750.57295565,
+        -874.74722809, -179.78491272]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]
+TRACE:App.py,175:__main__.ImagesMixer.get_fft:CALL *(array([[ 29,  37,  55, ..., 235, 235, 235],
+       [ 22,  45,  71, ..., 235, 235, 235],
+       [ 43,  50,  53, ..., 235, 235, 235],
+       ...,
+       [ 45,  49,  48, ...,  39,  40,  38],
+       [ 49,  42,  40, ...,  42,  42,  38],
+       [ 47,  41,  37, ...,  42,  43,  38]], dtype=uint8),) **{}
+TRACE:App.py,175:__main__.ImagesMixer.get_fft:RETURN [array([[118.36251182, 138.49133553, 139.25957154, ..., 137.62066358,
+        150.40014051, 112.47100131],
+       [141.73345828, 133.78939537, 145.24104268, ..., 111.19631189,
+        137.09954791, 149.53436079],
+       [139.42407937, 147.7743629 , 151.78234127, ..., 135.10243127,
+        139.47624709, 117.14611594],
+       ...,
+       [139.42407937, 117.14611594, 139.47624709, ..., 143.81015332,
+        151.78234127, 147.7743629 ],
+       [141.73345828, 149.53436079, 137.09954791, ..., 155.15847802,
+        145.24104268, 133.78939537],
+       [118.36251182, 112.47100131, 150.40014051, ..., 147.69025292,
+        139.25957154, 138.49133553]]), array([[ 0.19746146, -0.31301678, -1.0711512 , ...,  1.22926324,
+        -1.80085252, -0.79970187],
+       [ 2.62254774, -0.47179609,  2.56157095, ...,  0.13869762,
+         2.3466286 , -2.56346286],
+       [ 2.68809543, -2.43647507,  0.82662818, ...,  0.72095168,
+         1.78140085, -0.14293423],
+       ...,
+       [-2.68809543,  0.14293423, -1.78140085, ...,  0.16008169,
+        -0.82662818,  2.43647507],
+       [-2.62254774,  2.56346286, -2.3466286 , ..., -1.16810938,
+        -2.56157095,  0.47179609],
+       [-0.19746146,  0.79970187,  1.80085252, ..., -2.3799067 ,
+         1.0711512 ,  0.31301678]]), array([[117.97004106, 137.49510965, 124.54324059, ..., 115.74411001,
+                 nan, 105.24932382],
+       [         nan, 131.47564276,          nan, ..., 111.00332164,
+                 nan,          nan],
+       [         nan,          nan, 143.99129616, ..., 129.38017491,
+                 nan, 116.94111453],
+       ...,
+       [         nan, 116.94111453,          nan, ..., 143.5527898 ,
+        143.99129616,          nan],
+       [         nan,          nan,          nan, ..., 136.4230868 ,
+                 nan, 131.47564276],
+       [117.97004106, 105.24932382,          nan, ...,          nan,
+        124.54324059, 137.49510965]]), array([[   72.92319399,  -313.15074964,  -927.58842027, ...,
+          917.39703727, -1795.98216993,  -198.55725785],
+       [  593.23850611,  -365.36014598,   781.05763889, ...,
+           35.91475689,   677.14048851,  -965.28302569],
+       [  466.81036959, -1048.42460286,  1454.06512928, ...,
+          566.65882342,  1044.68356902,   -49.82554209],
+       ...,
+       [ -466.81036959,    49.82554209, -1044.68356902, ...,
+          211.48667025, -1454.06512928,  1048.42460286],
+       [ -593.23850611,   965.28302569,  -677.14048851, ...,
+        -2152.86458812,  -781.05763889,   365.36014598],
+       [  -72.92319399,   198.55725785,  1795.98216993, ...,
+        -1111.71091966,   927.58842027,   313.15074964]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[223, 223, 223, ..., 218, 218, 217],
+       [223, 223, 223, ..., 217, 217, 217],
+       [224, 224, 224, ..., 217, 217, 217],
+       ...,
+       [ 42,  58,  26, ...,  58,  90,  57],
+       [ 53,  47,  17, ...,  99,  90,  54],
+       [ 53,  35,  52, ...,  88,  59,  50]], dtype=uint8), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D36859A160>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[ 29,  37,  55, ..., 235, 235, 235],
+       [ 22,  45,  71, ..., 235, 235, 235],
+       [ 43,  50,  53, ..., 235, 235, 235],
+       ...,
+       [ 45,  49,  48, ...,  39,  40,  38],
+       [ 49,  42,  40, ...,  42,  42,  38],
+       [ 47,  41,  37, ...,  42,  43,  38]], dtype=uint8), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D365B62550>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,90:__main__.ImagesMixer.browse_imgs:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D3685D15E0>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>, [array([[143.81213797, 134.38334999, 144.05615897, ..., 145.74354727,
+        143.95320956, 135.55269755],
+       [138.05216832, 133.87755177, 131.37993869, ..., 141.49284234,
+        138.57635482, 145.10062258],
+       [114.63492515, 132.56905869, 124.87825632, ..., 142.6620611 ,
+        134.20969951, 147.93558163],
+       ...,
+       [114.63492515, 147.93558163, 134.20969951, ..., 125.61559864,
+        124.87825632, 132.56905869],
+       [138.05216832, 145.10062258, 138.57635482, ..., 139.81463298,
+        131.37993869, 133.87755177],
+       [143.81213797, 135.55269755, 143.95320956, ..., 151.79581915,
+        144.05615897, 134.38334999]]), array([[ 2.98290624,  0.21884061,  2.43237188, ...,  2.02285296,
+        -0.45375018, -2.90214505],
+       [-1.07670649, -2.91670927,  1.15467081, ..., -0.89473772,
+         1.289669  , -0.27220426],
+       [-2.12667793,  2.14104731, -0.22427524, ...,  2.00545087,
+        -1.41141109, -2.83256001],
+       ...,
+       [ 2.12667793,  2.83256001,  1.41141109, ..., -3.06020061,
+         0.22427524, -2.14104731],
+       [ 1.07670649,  0.27220426, -1.289669  , ..., -2.71784125,
+        -1.15467081,  2.91670927],
+       [-2.98290624,  2.90214505,  0.45375018, ..., -0.3892339 ,
+        -2.43237188, -0.21884061]]), array([[         nan, 133.90056573,          nan, ...,          nan,
+        141.8195279 ,          nan],
+       [123.1309343 ,          nan, 113.26400186, ..., 132.11590604,
+        112.93326368, 144.35033588],
+       [         nan,          nan, 124.37098832, ...,          nan,
+         97.39632647,          nan],
+       ...,
+       [         nan,          nan,  97.39632647, ...,          nan,
+        124.37098832,          nan],
+       [123.1309343 , 144.35033588, 112.93326368, ...,          nan,
+        113.26400186,          nan],
+       [         nan,          nan, 141.8195279 , ..., 150.2409133 ,
+                 nan, 133.90056573]]), array([[ 209.67971347,  179.78491272,  874.74722809, ..., 1314.63905978,
+        -585.7531605 , -208.22933355],
+       [-875.88103969, -180.05480736,  651.83808187, ..., -921.71718924,
+         981.193513  , -380.48575812],
+       [-262.05726618,  636.63668476, -114.50680721, ..., 1136.27129967,
+        -810.56294685, -495.96377163],
+       ...,
+       [ 262.05726618,  495.96377163,  810.56294685, ...,  -43.43205791,
+         114.50680721, -636.63668476],
+       [ 875.88103969,  380.48575812, -981.193513  , ..., -446.75689651,
+        -651.83808187,  180.05480736],
+       [-209.67971347,  208.22933355,  585.7531605 , ..., -750.57295565,
+        -874.74722809, -179.78491272]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[143.81213797, 134.38334999, 144.05615897, ..., 145.74354727,
+        143.95320956, 135.55269755],
+       [138.05216832, 133.87755177, 131.37993869, ..., 141.49284234,
+        138.57635482, 145.10062258],
+       [114.63492515, 132.56905869, 124.87825632, ..., 142.6620611 ,
+        134.20969951, 147.93558163],
+       ...,
+       [114.63492515, 147.93558163, 134.20969951, ..., 125.61559864,
+        124.87825632, 132.56905869],
+       [138.05216832, 145.10062258, 138.57635482, ..., 139.81463298,
+        131.37993869, 133.87755177],
+       [143.81213797, 135.55269755, 143.95320956, ..., 151.79581915,
+        144.05615897, 134.38334999]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D3685D15E0>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>, [array([[143.81213797, 134.38334999, 144.05615897, ..., 145.74354727,
+        143.95320956, 135.55269755],
+       [138.05216832, 133.87755177, 131.37993869, ..., 141.49284234,
+        138.57635482, 145.10062258],
+       [114.63492515, 132.56905869, 124.87825632, ..., 142.6620611 ,
+        134.20969951, 147.93558163],
+       ...,
+       [114.63492515, 147.93558163, 134.20969951, ..., 125.61559864,
+        124.87825632, 132.56905869],
+       [138.05216832, 145.10062258, 138.57635482, ..., 139.81463298,
+        131.37993869, 133.87755177],
+       [143.81213797, 135.55269755, 143.95320956, ..., 151.79581915,
+        144.05615897, 134.38334999]]), array([[ 2.98290624,  0.21884061,  2.43237188, ...,  2.02285296,
+        -0.45375018, -2.90214505],
+       [-1.07670649, -2.91670927,  1.15467081, ..., -0.89473772,
+         1.289669  , -0.27220426],
+       [-2.12667793,  2.14104731, -0.22427524, ...,  2.00545087,
+        -1.41141109, -2.83256001],
+       ...,
+       [ 2.12667793,  2.83256001,  1.41141109, ..., -3.06020061,
+         0.22427524, -2.14104731],
+       [ 1.07670649,  0.27220426, -1.289669  , ..., -2.71784125,
+        -1.15467081,  2.91670927],
+       [-2.98290624,  2.90214505,  0.45375018, ..., -0.3892339 ,
+        -2.43237188, -0.21884061]]), array([[         nan, 133.90056573,          nan, ...,          nan,
+        141.8195279 ,          nan],
+       [123.1309343 ,          nan, 113.26400186, ..., 132.11590604,
+        112.93326368, 144.35033588],
+       [         nan,          nan, 124.37098832, ...,          nan,
+         97.39632647,          nan],
+       ...,
+       [         nan,          nan,  97.39632647, ...,          nan,
+        124.37098832,          nan],
+       [123.1309343 , 144.35033588, 112.93326368, ...,          nan,
+        113.26400186,          nan],
+       [         nan,          nan, 141.8195279 , ..., 150.2409133 ,
+                 nan, 133.90056573]]), array([[ 209.67971347,  179.78491272,  874.74722809, ..., 1314.63905978,
+        -585.7531605 , -208.22933355],
+       [-875.88103969, -180.05480736,  651.83808187, ..., -921.71718924,
+         981.193513  , -380.48575812],
+       [-262.05726618,  636.63668476, -114.50680721, ..., 1136.27129967,
+        -810.56294685, -495.96377163],
+       ...,
+       [ 262.05726618,  495.96377163,  810.56294685, ...,  -43.43205791,
+         114.50680721, -636.63668476],
+       [ 875.88103969,  380.48575812, -981.193513  , ..., -446.75689651,
+        -651.83808187,  180.05480736],
+       [-209.67971347,  208.22933355,  585.7531605 , ..., -750.57295565,
+        -874.74722809, -179.78491272]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[ 2.98290624,  0.21884061,  2.43237188, ...,  2.02285296,
+        -0.45375018, -2.90214505],
+       [-1.07670649, -2.91670927,  1.15467081, ..., -0.89473772,
+         1.289669  , -0.27220426],
+       [-2.12667793,  2.14104731, -0.22427524, ...,  2.00545087,
+        -1.41141109, -2.83256001],
+       ...,
+       [ 2.12667793,  2.83256001,  1.41141109, ..., -3.06020061,
+         0.22427524, -2.14104731],
+       [ 1.07670649,  0.27220426, -1.289669  , ..., -2.71784125,
+        -1.15467081,  2.91670927],
+       [-2.98290624,  2.90214505,  0.45375018, ..., -0.3892339 ,
+        -2.43237188, -0.21884061]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D3685D15E0>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>, [array([[143.81213797, 134.38334999, 144.05615897, ..., 145.74354727,
+        143.95320956, 135.55269755],
+       [138.05216832, 133.87755177, 131.37993869, ..., 141.49284234,
+        138.57635482, 145.10062258],
+       [114.63492515, 132.56905869, 124.87825632, ..., 142.6620611 ,
+        134.20969951, 147.93558163],
+       ...,
+       [114.63492515, 147.93558163, 134.20969951, ..., 125.61559864,
+        124.87825632, 132.56905869],
+       [138.05216832, 145.10062258, 138.57635482, ..., 139.81463298,
+        131.37993869, 133.87755177],
+       [143.81213797, 135.55269755, 143.95320956, ..., 151.79581915,
+        144.05615897, 134.38334999]]), array([[ 2.98290624,  0.21884061,  2.43237188, ...,  2.02285296,
+        -0.45375018, -2.90214505],
+       [-1.07670649, -2.91670927,  1.15467081, ..., -0.89473772,
+         1.289669  , -0.27220426],
+       [-2.12667793,  2.14104731, -0.22427524, ...,  2.00545087,
+        -1.41141109, -2.83256001],
+       ...,
+       [ 2.12667793,  2.83256001,  1.41141109, ..., -3.06020061,
+         0.22427524, -2.14104731],
+       [ 1.07670649,  0.27220426, -1.289669  , ..., -2.71784125,
+        -1.15467081,  2.91670927],
+       [-2.98290624,  2.90214505,  0.45375018, ..., -0.3892339 ,
+        -2.43237188, -0.21884061]]), array([[         nan, 133.90056573,          nan, ...,          nan,
+        141.8195279 ,          nan],
+       [123.1309343 ,          nan, 113.26400186, ..., 132.11590604,
+        112.93326368, 144.35033588],
+       [         nan,          nan, 124.37098832, ...,          nan,
+         97.39632647,          nan],
+       ...,
+       [         nan,          nan,  97.39632647, ...,          nan,
+        124.37098832,          nan],
+       [123.1309343 , 144.35033588, 112.93326368, ...,          nan,
+        113.26400186,          nan],
+       [         nan,          nan, 141.8195279 , ..., 150.2409133 ,
+                 nan, 133.90056573]]), array([[ 209.67971347,  179.78491272,  874.74722809, ..., 1314.63905978,
+        -585.7531605 , -208.22933355],
+       [-875.88103969, -180.05480736,  651.83808187, ..., -921.71718924,
+         981.193513  , -380.48575812],
+       [-262.05726618,  636.63668476, -114.50680721, ..., 1136.27129967,
+        -810.56294685, -495.96377163],
+       ...,
+       [ 262.05726618,  495.96377163,  810.56294685, ...,  -43.43205791,
+         114.50680721, -636.63668476],
+       [ 875.88103969,  380.48575812, -981.193513  , ..., -446.75689651,
+        -651.83808187,  180.05480736],
+       [-209.67971347,  208.22933355,  585.7531605 , ..., -750.57295565,
+        -874.74722809, -179.78491272]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[         nan, 133.90056573,          nan, ...,          nan,
+        141.8195279 ,          nan],
+       [123.1309343 ,          nan, 113.26400186, ..., 132.11590604,
+        112.93326368, 144.35033588],
+       [         nan,          nan, 124.37098832, ...,          nan,
+         97.39632647,          nan],
+       ...,
+       [         nan,          nan,  97.39632647, ...,          nan,
+        124.37098832,          nan],
+       [123.1309343 , 144.35033588, 112.93326368, ...,          nan,
+        113.26400186,          nan],
+       [         nan,          nan, 141.8195279 , ..., 150.2409133 ,
+                 nan, 133.90056573]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D3685D1670>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D36859A040>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>, [array([[118.36251182, 138.49133553, 139.25957154, ..., 137.62066358,
+        150.40014051, 112.47100131],
+       [141.73345828, 133.78939537, 145.24104268, ..., 111.19631189,
+        137.09954791, 149.53436079],
+       [139.42407937, 147.7743629 , 151.78234127, ..., 135.10243127,
+        139.47624709, 117.14611594],
+       ...,
+       [139.42407937, 117.14611594, 139.47624709, ..., 143.81015332,
+        151.78234127, 147.7743629 ],
+       [141.73345828, 149.53436079, 137.09954791, ..., 155.15847802,
+        145.24104268, 133.78939537],
+       [118.36251182, 112.47100131, 150.40014051, ..., 147.69025292,
+        139.25957154, 138.49133553]]), array([[ 0.19746146, -0.31301678, -1.0711512 , ...,  1.22926324,
+        -1.80085252, -0.79970187],
+       [ 2.62254774, -0.47179609,  2.56157095, ...,  0.13869762,
+         2.3466286 , -2.56346286],
+       [ 2.68809543, -2.43647507,  0.82662818, ...,  0.72095168,
+         1.78140085, -0.14293423],
+       ...,
+       [-2.68809543,  0.14293423, -1.78140085, ...,  0.16008169,
+        -0.82662818,  2.43647507],
+       [-2.62254774,  2.56346286, -2.3466286 , ..., -1.16810938,
+        -2.56157095,  0.47179609],
+       [-0.19746146,  0.79970187,  1.80085252, ..., -2.3799067 ,
+         1.0711512 ,  0.31301678]]), array([[117.97004106, 137.49510965, 124.54324059, ..., 115.74411001,
+                 nan, 105.24932382],
+       [         nan, 131.47564276,          nan, ..., 111.00332164,
+                 nan,          nan],
+       [         nan,          nan, 143.99129616, ..., 129.38017491,
+                 nan, 116.94111453],
+       ...,
+       [         nan, 116.94111453,          nan, ..., 143.5527898 ,
+        143.99129616,          nan],
+       [         nan,          nan,          nan, ..., 136.4230868 ,
+                 nan, 131.47564276],
+       [117.97004106, 105.24932382,          nan, ...,          nan,
+        124.54324059, 137.49510965]]), array([[   72.92319399,  -313.15074964,  -927.58842027, ...,
+          917.39703727, -1795.98216993,  -198.55725785],
+       [  593.23850611,  -365.36014598,   781.05763889, ...,
+           35.91475689,   677.14048851,  -965.28302569],
+       [  466.81036959, -1048.42460286,  1454.06512928, ...,
+          566.65882342,  1044.68356902,   -49.82554209],
+       ...,
+       [ -466.81036959,    49.82554209, -1044.68356902, ...,
+          211.48667025, -1454.06512928,  1048.42460286],
+       [ -593.23850611,   965.28302569,  -677.14048851, ...,
+        -2152.86458812,  -781.05763889,   365.36014598],
+       [  -72.92319399,   198.55725785,  1795.98216993, ...,
+        -1111.71091966,   927.58842027,   313.15074964]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[118.36251182, 138.49133553, 139.25957154, ..., 137.62066358,
+        150.40014051, 112.47100131],
+       [141.73345828, 133.78939537, 145.24104268, ..., 111.19631189,
+        137.09954791, 149.53436079],
+       [139.42407937, 147.7743629 , 151.78234127, ..., 135.10243127,
+        139.47624709, 117.14611594],
+       ...,
+       [139.42407937, 117.14611594, 139.47624709, ..., 143.81015332,
+        151.78234127, 147.7743629 ],
+       [141.73345828, 149.53436079, 137.09954791, ..., 155.15847802,
+        145.24104268, 133.78939537],
+       [118.36251182, 112.47100131, 150.40014051, ..., 147.69025292,
+        139.25957154, 138.49133553]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D36859A040>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>, [array([[118.36251182, 138.49133553, 139.25957154, ..., 137.62066358,
+        150.40014051, 112.47100131],
+       [141.73345828, 133.78939537, 145.24104268, ..., 111.19631189,
+        137.09954791, 149.53436079],
+       [139.42407937, 147.7743629 , 151.78234127, ..., 135.10243127,
+        139.47624709, 117.14611594],
+       ...,
+       [139.42407937, 117.14611594, 139.47624709, ..., 143.81015332,
+        151.78234127, 147.7743629 ],
+       [141.73345828, 149.53436079, 137.09954791, ..., 155.15847802,
+        145.24104268, 133.78939537],
+       [118.36251182, 112.47100131, 150.40014051, ..., 147.69025292,
+        139.25957154, 138.49133553]]), array([[ 0.19746146, -0.31301678, -1.0711512 , ...,  1.22926324,
+        -1.80085252, -0.79970187],
+       [ 2.62254774, -0.47179609,  2.56157095, ...,  0.13869762,
+         2.3466286 , -2.56346286],
+       [ 2.68809543, -2.43647507,  0.82662818, ...,  0.72095168,
+         1.78140085, -0.14293423],
+       ...,
+       [-2.68809543,  0.14293423, -1.78140085, ...,  0.16008169,
+        -0.82662818,  2.43647507],
+       [-2.62254774,  2.56346286, -2.3466286 , ..., -1.16810938,
+        -2.56157095,  0.47179609],
+       [-0.19746146,  0.79970187,  1.80085252, ..., -2.3799067 ,
+         1.0711512 ,  0.31301678]]), array([[117.97004106, 137.49510965, 124.54324059, ..., 115.74411001,
+                 nan, 105.24932382],
+       [         nan, 131.47564276,          nan, ..., 111.00332164,
+                 nan,          nan],
+       [         nan,          nan, 143.99129616, ..., 129.38017491,
+                 nan, 116.94111453],
+       ...,
+       [         nan, 116.94111453,          nan, ..., 143.5527898 ,
+        143.99129616,          nan],
+       [         nan,          nan,          nan, ..., 136.4230868 ,
+                 nan, 131.47564276],
+       [117.97004106, 105.24932382,          nan, ...,          nan,
+        124.54324059, 137.49510965]]), array([[   72.92319399,  -313.15074964,  -927.58842027, ...,
+          917.39703727, -1795.98216993,  -198.55725785],
+       [  593.23850611,  -365.36014598,   781.05763889, ...,
+           35.91475689,   677.14048851,  -965.28302569],
+       [  466.81036959, -1048.42460286,  1454.06512928, ...,
+          566.65882342,  1044.68356902,   -49.82554209],
+       ...,
+       [ -466.81036959,    49.82554209, -1044.68356902, ...,
+          211.48667025, -1454.06512928,  1048.42460286],
+       [ -593.23850611,   965.28302569,  -677.14048851, ...,
+        -2152.86458812,  -781.05763889,   365.36014598],
+       [  -72.92319399,   198.55725785,  1795.98216993, ...,
+        -1111.71091966,   927.58842027,   313.15074964]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[ 0.19746146, -0.31301678, -1.0711512 , ...,  1.22926324,
+        -1.80085252, -0.79970187],
+       [ 2.62254774, -0.47179609,  2.56157095, ...,  0.13869762,
+         2.3466286 , -2.56346286],
+       [ 2.68809543, -2.43647507,  0.82662818, ...,  0.72095168,
+         1.78140085, -0.14293423],
+       ...,
+       [-2.68809543,  0.14293423, -1.78140085, ...,  0.16008169,
+        -0.82662818,  2.43647507],
+       [-2.62254774,  2.56346286, -2.3466286 , ..., -1.16810938,
+        -2.56157095,  0.47179609],
+       [-0.19746146,  0.79970187,  1.80085252, ..., -2.3799067 ,
+         1.0711512 ,  0.31301678]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:CALL *(<PyQt5.QtWidgets.QComboBox object at 0x000001D36859A040>, <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>, [array([[118.36251182, 138.49133553, 139.25957154, ..., 137.62066358,
+        150.40014051, 112.47100131],
+       [141.73345828, 133.78939537, 145.24104268, ..., 111.19631189,
+        137.09954791, 149.53436079],
+       [139.42407937, 147.7743629 , 151.78234127, ..., 135.10243127,
+        139.47624709, 117.14611594],
+       ...,
+       [139.42407937, 117.14611594, 139.47624709, ..., 143.81015332,
+        151.78234127, 147.7743629 ],
+       [141.73345828, 149.53436079, 137.09954791, ..., 155.15847802,
+        145.24104268, 133.78939537],
+       [118.36251182, 112.47100131, 150.40014051, ..., 147.69025292,
+        139.25957154, 138.49133553]]), array([[ 0.19746146, -0.31301678, -1.0711512 , ...,  1.22926324,
+        -1.80085252, -0.79970187],
+       [ 2.62254774, -0.47179609,  2.56157095, ...,  0.13869762,
+         2.3466286 , -2.56346286],
+       [ 2.68809543, -2.43647507,  0.82662818, ...,  0.72095168,
+         1.78140085, -0.14293423],
+       ...,
+       [-2.68809543,  0.14293423, -1.78140085, ...,  0.16008169,
+        -0.82662818,  2.43647507],
+       [-2.62254774,  2.56346286, -2.3466286 , ..., -1.16810938,
+        -2.56157095,  0.47179609],
+       [-0.19746146,  0.79970187,  1.80085252, ..., -2.3799067 ,
+         1.0711512 ,  0.31301678]]), array([[117.97004106, 137.49510965, 124.54324059, ..., 115.74411001,
+                 nan, 105.24932382],
+       [         nan, 131.47564276,          nan, ..., 111.00332164,
+                 nan,          nan],
+       [         nan,          nan, 143.99129616, ..., 129.38017491,
+                 nan, 116.94111453],
+       ...,
+       [         nan, 116.94111453,          nan, ..., 143.5527898 ,
+        143.99129616,          nan],
+       [         nan,          nan,          nan, ..., 136.4230868 ,
+                 nan, 131.47564276],
+       [117.97004106, 105.24932382,          nan, ...,          nan,
+        124.54324059, 137.49510965]]), array([[   72.92319399,  -313.15074964,  -927.58842027, ...,
+          917.39703727, -1795.98216993,  -198.55725785],
+       [  593.23850611,  -365.36014598,   781.05763889, ...,
+           35.91475689,   677.14048851,  -965.28302569],
+       [  466.81036959, -1048.42460286,  1454.06512928, ...,
+          566.65882342,  1044.68356902,   -49.82554209],
+       ...,
+       [ -466.81036959,    49.82554209, -1044.68356902, ...,
+          211.48667025, -1454.06512928,  1048.42460286],
+       [ -593.23850611,   965.28302569,  -677.14048851, ...,
+        -2152.86458812,  -781.05763889,   365.36014598],
+       [  -72.92319399,   198.55725785,  1795.98216993, ...,
+        -1111.71091966,   927.58842027,   313.15074964]]), array([ 0.00000000e+00,  1.43636886e-05,  2.87273772e-05, ...,
+       -4.30910658e-05, -2.87273772e-05, -1.43636886e-05])]) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:CALL *(array([[117.97004106, 137.49510965, 124.54324059, ..., 115.74411001,
+                 nan, 105.24932382],
+       [         nan, 131.47564276,          nan, ..., 111.00332164,
+                 nan,          nan],
+       [         nan,          nan, 143.99129616, ..., 129.38017491,
+                 nan, 116.94111453],
+       ...,
+       [         nan, 116.94111453,          nan, ..., 143.5527898 ,
+        143.99129616,          nan],
+       [         nan,          nan,          nan, ..., 136.4230868 ,
+                 nan, 131.47564276],
+       [117.97004106, 105.24932382,          nan, ...,          nan,
+        124.54324059, 137.49510965]]), <pyqtgraph.imageview.ImageView.ImageView object at 0x000001D368555B80>) **{}
+TRACE:App.py,118:__main__.ImagesMixer.plotting:RETURN None
+TRACE:App.py,124:__main__.ImagesMixer.display_component:RETURN None
+TRACE:App.py,81:__main__.ImagesMixer.closeEvent:CALL *(<PyQt5.QtGui.QCloseEvent object at 0x000001D3663A9EE0>,) **{}
+TRACE:App.py,81:__main__.ImagesMixer.closeEvent:RETURN None
