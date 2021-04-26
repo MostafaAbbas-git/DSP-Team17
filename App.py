@@ -83,6 +83,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
             self.displays[i].ui.roiBtn.hide()
             self.displays[i].ui.menuBtn.hide()
             self.displays[i].ui.roiPlot.hide()
+            vbox=self.displays[i].getView()
+            vbox.setBackgroundColor('#2d2d46')
 
     # Related to QSettings
     def closeEvent(self, event):
