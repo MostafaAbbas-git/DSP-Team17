@@ -82,7 +82,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
     # connecting Combo boxes of the input displays
     def display_component_counter(self, i: int):
         self.dropMenu[i].currentIndexChanged.connect(
-            lambda: self.display_component(self.dropMenu[i], self.displays[i+2], self.image1_Allfft[1]))
+            lambda: self.display_component(self.dropMenu[i], self.displays[i+2], self.image_Allfft[i][1]))
 
     def comboBox_updater(self):
         # updating component 1 comboBox will affect the available items of component 2 comboBox
@@ -247,6 +247,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
             ## Calculate and store all fourier components for each image at once to be used later##
             self.image1_Allfft = self.get_fft(self.loaded_imgs[0])
             self.image2_Allfft = self.get_fft(self.loaded_imgs[1])
+            self.image_Allfft = [self.image1_Allfft,self.image2_Allfft]
 
             # Plotting loop
             for i in range(2):
@@ -314,8 +315,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
         for i in range(7):
             self.dropMenu[i].setCurrentIndex(0)
 
+        value = 100 
         for i in range(2):
-            self.mixing_sliders[i].setProperty("value", 50)
+            self.mixing_sliders[i].setProperty("value", i*value)
 
 
 def main():
