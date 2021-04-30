@@ -252,7 +252,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
         </item>
         <item>
          <property name="text">
-          <string>Image 1 </string>
+          <string>Image 1</string>
          </property>
         </item>
         <item>
@@ -325,7 +325,7 @@ background-color: rgb(45, 45, 70);
          <number>100</number>
         </property>
         <property name="value">
-         <number>50</number>
+         <number>0</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -338,7 +338,7 @@ background-color: rgb(45, 45, 70);
          <number>100</number>
         </property>
         <property name="value">
-         <number>50</number>
+         <number>100</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -360,6 +360,114 @@ background-color: rgb(45, 45, 70);
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="19" column="0" colspan="2">
+       <layout class="QFormLayout" name="formLayout_3"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="0">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="20" column="0">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="20" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>100</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 13pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Mixer output to:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 13pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(40, 40, 60);
+font: 13pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string> Component 2</string>
+        </property>
+       </widget>
       </item>
       <item row="7" column="0">
        <widget class="QComboBox" name="Comp1_Menu">
@@ -407,114 +515,6 @@ background-color: rgb(45, 45, 70);</string>
         </item>
        </widget>
       </item>
-      <item row="19" column="0" colspan="2">
-       <layout class="QFormLayout" name="formLayout_3"/>
-      </item>
-      <item row="0" column="0">
-       <widget class="QFrame" name="frame">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="9" column="0">
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLabel" name="label">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>50</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="20" column="0">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="20" column="1">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>50</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(40, 40, 60);
-font: 13pt &quot;Ubuntu&quot;;</string>
-        </property>
-        <property name="text">
-         <string> Mixer output to:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(40, 40, 60);
-font: 13pt &quot;Ubuntu&quot;;</string>
-        </property>
-        <property name="text">
-         <string> Component 1</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(40, 40, 60);
-font: 13pt &quot;Ubuntu&quot;;</string>
-        </property>
-        <property name="text">
-         <string> Component 2</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
@@ -525,7 +525,7 @@ font: 13pt &quot;Ubuntu&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
