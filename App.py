@@ -8,6 +8,8 @@ import cv2 as cv
 import sys
 import os
 import logging
+from ImageDisplay import imageDisplay
+import ctypes
 # Create and configure logger
 LOG_FORMAT = "%(levelname)s:%(filename)s,%(lineno)d:%(name)s.%(funcName)s:%(message)s"
 logging.basicConfig(filename="ImagesMixer.log",
@@ -52,6 +54,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
+
+        self.image_Allfft = []
 
         ## Connecting Buttons ##
         self.actionClear.triggered.connect(lambda: self.clear_all_widgets())
@@ -115,20 +119,20 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         # Assign the correct image components to different arrays according to selected images
         if self.image_of_component1 == "Image 1" and self.image_of_component2 == "Image 2":
-            first_img_slot = self.image1_Allfft
-            second_img_slot = self.image2_Allfft
+            first_img_slot = self.image_Allfft[0]
+            second_img_slot = self.image_Allfft[1]
 
         if self.image_of_component1 == "Image 2" and self.image_of_component2 == "Image 1":
-            first_img_slot = self.image2_Allfft
-            second_img_slot = self.image1_Allfft
+            first_img_slot = self.image_Allfft[1]
+            second_img_slot = self.image_Allfft[0]
 
         if self.image_of_component1 == "Image 1" and self.image_of_component2 == "Image 1":
-            first_img_slot = self.image1_Allfft
-            second_img_slot = self.image1_Allfft
+            first_img_slot = self.image_Allfft[0]
+            second_img_slot = self.image_Allfft[0]
 
         if self.image_of_component1 == "Image 2" and self.image_of_component2 == "Image 2":
-            first_img_slot = self.image2_Allfft
-            second_img_slot = self.image2_Allfft
+            first_img_slot = self.image_Allfft[1]
+            second_img_slot = self.image_Allfft[1]
 
         # Return all fft components of each image in separate arrays
         return [first_img_slot, second_img_slot]
@@ -233,25 +237,21 @@ class ImagesMixer(QtWidgets.QMainWindow):
             self.number_warning_msg.exec_()
             return self.browse_imgs()
         # Ignore RGB values; converting to greyscale images
-        self.img1Byte = cv.cvtColor(
-            cv.imread(selected_image[0][0]), cv.COLOR_BGR2GRAY)
-        self.img2Byte = cv.cvtColor(
-            cv.imread(selected_image[0][1]), cv.COLOR_BGR2GRAY)
+        for i in range(len(selected_image)):
+            self.loaded_imgs[i] = imageDisplay()
+            self.loaded_imgs[i].read(selected_image[0][i])
 
-        self.loaded_imgs = [self.img1Byte, self.img2Byte]
-        if self.img1Byte.shape != self.img2Byte.shape:
+        if self.loaded_imgs[0].shape != self.loaded_imgs[1].shape:
             # Showing size warning msg and return
             self.size_warning_msg.exec_()
             return self.browse_imgs()
         else:
             ## Calculate and store all fourier components for each image at once to be used later##
-            self.image1_Allfft = self.get_fft(self.loaded_imgs[0])
-            self.image2_Allfft = self.get_fft(self.loaded_imgs[1])
-            self.image_Allfft = [self.image1_Allfft,self.image2_Allfft]
-
-            # Plotting loop
             for i in range(2):
-                self.plotting(self.loaded_imgs[i], self.displays[i])
+                self.fft_Access = imageDisplay()
+                self.image_Allfft.append(
+                    self.fft_Access.get_fft(self.loaded_imgs[i].imgByte))
+                self.plotting(self.loaded_imgs[i].imgByte, self.displays[i])
 
     def plotting(self, data, viewer):
         viewer.setImage(data.T)
@@ -269,42 +269,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
             component = img_components[selected_option-1]
             self.plotting(component, display)
 
-    def get_fft(self, data_array: np.ndarray):
-        # Fourier transform of given data array
-        fft_data = fft2(data_array)
-        # shifting the array of data
-        fft_data_shifted = np.fft.fftshift(fft_data)
-        # separate the magnitude
-        fft_data_mag = np.abs(fft_data)
-        # get the magnitude spectrum
-        fft_mag_spectrum = 20*np.log(np.abs(fft_data_shifted))
-        # separate the phase
-        fft_data_phase = np.angle(fft_data)
-        # separate the real components
-        fft_data_real = np.real(fft_data)
-        # get the real spectrum
-        fft_real_spectrum = 20*np.log(np.real(fft_data_shifted))
-        # separate the imaginary components
-        fft_data_imag = np.imag(fft_data)
-        # The Discrete Fourier Transform sample frequencies
-        sample_freq = fftfreq(fft_data.size)
-
-        FFT_mixinglist = [fft_data_mag, fft_data_phase,
-                          fft_data_real, fft_data_imag, sample_freq]
-        # list of lists holds all calculated values
-        FFT_displayComponents = [fft_mag_spectrum, fft_data_phase,
-                                 fft_real_spectrum, fft_data_imag, sample_freq]
-
-        FFT_list = [FFT_mixinglist, FFT_displayComponents]
-        '''
-        return a list that contains 2 lists
-        FFT_list[0] is fourier components without any shift or multiplying by log
-        FFT_list[1] contains the magnitude and real spectrum with the rest of components, 
-        that are neaded in the component display.
-        '''
-        return FFT_list
-
     # Fixed displays are excluded
+
     def clear_all_widgets(self):
         self.default()
         for i in range(4):
@@ -315,7 +281,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
         for i in range(7):
             self.dropMenu[i].setCurrentIndex(0)
 
-        value = 100 
+        value = 100
         for i in range(2):
             self.mixing_sliders[i].setProperty("value", i*value)
 
