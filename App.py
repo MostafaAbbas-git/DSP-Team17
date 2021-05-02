@@ -56,6 +56,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
 
         self.image_Allfft = []
+        self.images = ["Image 1", "Image 2"]
+        self.outputs = ["Output 1", "Output 2"]
 
         ## Connecting Buttons ##
         self.actionClear.triggered.connect(lambda: self.clear_all_widgets())
@@ -117,22 +119,11 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.image_of_component1 = self.Comp1_ImageMenu.currentText()
         self.image_of_component2 = self.Comp2_ImageMenu.currentText()
 
-        # Assign the correct image components to different arrays according to selected images
-        if self.image_of_component1 == "Image 1" and self.image_of_component2 == "Image 2":
-            first_img_slot = self.image_Allfft[0]
-            second_img_slot = self.image_Allfft[1]
-
-        if self.image_of_component1 == "Image 2" and self.image_of_component2 == "Image 1":
-            first_img_slot = self.image_Allfft[1]
-            second_img_slot = self.image_Allfft[0]
-
-        if self.image_of_component1 == "Image 1" and self.image_of_component2 == "Image 1":
-            first_img_slot = self.image_Allfft[0]
-            second_img_slot = self.image_Allfft[0]
-
-        if self.image_of_component1 == "Image 2" and self.image_of_component2 == "Image 2":
-            first_img_slot = self.image_Allfft[1]
-            second_img_slot = self.image_Allfft[1]
+        for i in range(2):
+            for j in range(2):
+                if self.image_of_component1 == self.images[i] and self.image_of_component2 == self.images[j]:
+                    first_img_slot = self.image_Allfft[i]
+                    second_img_slot = self.image_Allfft[j]
 
         # Return all fft components of each image in separate arrays
         return [first_img_slot, second_img_slot]
@@ -148,76 +139,15 @@ class ImagesMixer(QtWidgets.QMainWindow):
             # creating a list that holds the current slider values divided by 100 to be used later with mixing equations
             self.ratios[i] = (self.mixing_sliders[i].value() / 100)
 
-        if self.component1 == "Magnitude" and self.component2 == "Phase":
-            new_mag = np.add(
-                self.image1[0][0] * self.ratios[0], self.image2[0][0] * (1 - self.ratios[0]))
-            new_phase = np.add(
-                self.image2[0][1] * (self.ratios[1]), self.image1[0][1] * (1 - self.ratios[1]))
+        output = imageDisplay()
+        output_Data = output.mixing(
+            self.image1, self.image2, self.component1, self.component2, self.ratios)
 
-        if self.component1 == "Magnitude" and self.component2 == "Uniform phase":
-            new_mag = np.add(
-                self.image1[0][0] * self.ratios[0], self.image2[0][0] * (1 - self.ratios[0]))
-            new_phase = np.zeros(self.image2[0][1].shape)
-
-        if self.component1 == "Phase" and self.component2 == "Magnitude":
-            new_mag = np.add(
-                self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
-            new_phase = np.add(
-                self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
-
-        if self.component1 == "Phase" and self.component2 == "Uniform magnitude":
-            new_mag = np.ones(self.image2[0][0].shape)
-            new_phase = np.add(
-                self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
-
-        if self.component1 == "Real" and self.component2 == "Imaginary":
-            new_real = np.add(
-                self.image1[0][2] * self.ratios[0], self.image2[0][2] * (1 - self.ratios[0]))
-            new_imag = np.add(
-                self.image2[0][3] * (self.ratios[1]), self.image1[0][3] * (1 - self.ratios[1]))
-
-        if self.component1 == "Imaginary" and self.component2 == "Real":
-            new_real = np.add(
-                self.image2[0][2] * self.ratios[1], self.image1[0][2] * (1 - self.ratios[1]))
-            new_imag = np.add(
-                self.image1[0][3] * (self.ratios[0]), self.image2[0][3] * (1 - self.ratios[0]))
-
-        if self.component1 == "Uniform magnitude" and self.component2 == "Phase":
-            new_mag = np.ones(self.image1[0][0].shape)
-            new_phase = np.add((self.image2[0][1] * self.ratios[1]),
-                               (self.image1[0][1] * (1 - self.ratios[1])))
-
-        if self.component1 == "Uniform magnitude" and self.component2 == "Uniform phase":
-            new_mag = np.ones(self.image1[0][0].shape)
-            new_phase = np.zeros(self.image2[0][1].shape)
-
-        if self.component1 == "Uniform phase" and self.component2 == "Magnitude":
-            new_mag = np.add(
-                self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
-            new_phase = np.zeros(self.image1[0][1].shape)
-
-        if self.component1 == "Uniform phase" and self.component2 == "Uniform magnitude":
-            new_mag = np.ones(self.image2[0][0].shape)
-            new_phase = np.zeros(self.image1[0][1].shape)
-
-        if self.component1 == "Imaginary" or self.component2 == "Imaginary":
-            new_imag = (1j * new_imag)
-            new_array = np.add(new_real, new_imag)
-        else:
-            new_phase = np.exp(1j * new_phase)
-            new_array = np.multiply(new_phase, new_mag)
-
-        output = np.real(ifft2(new_array))
-
-        if self.Output_menu.currentText() == "Output 1":
-            return self.plotting(output, self.output1_Display)
-
-        elif self.Output_menu.currentText() == "Output 2":
-            return self.plotting(output, self.output2_Display)
-
-        else:
-            self.output1_Display.clear()
-            self.output2_Display.clear()
+        for i in range(2):
+            if self.Output_menu.currentText() == self.outputs[i]:
+                return self.plotting(output_Data, self.displays[i+4])
+            else:
+                self.displays[i+4].clear()
 
     def closeEvent(self, event):  # Related to QSettings
         self.settings.setValue('window size', self.size())
