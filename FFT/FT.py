@@ -3,11 +3,9 @@ import ctypes
 
 library = ctypes.CDLL('./lib.so')
 
-library.connect()
 
 path = ['data/data1.txt', 'data/data2.txt', 'data/data3.txt',
          'data/data4.txt', 'data/data5.txt','data/data6.txt']
-
 
 """ 
 for i in range (len(path)):

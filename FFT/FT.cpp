@@ -15,6 +15,7 @@ extern "C"
     vector<complex<double>> DFT(vector<complex<double>> data);
 }
 
+
 void FFT (vector<complex<double>> & fftArray){
     
     int N = fftArray.size();
@@ -41,9 +42,9 @@ void FFT (vector<complex<double>> & fftArray){
     // Compining the small vectors to make the final fft array
     for(int k = 0; k < N/2; k++){
         
-        complex<double> wn = (complex<double>(cos(-2*M_PI *k /N),sin(-2*M_PI *k /N)))*odd[k];
-        fftArray[k] = even[k] + wn;
-        fftArray[k+N/2] = even[k] - wn;  
+        complex<double> wn_times_Ok = (complex<double>(cos(-2*M_PI *k /N),sin(-2*M_PI *k /N)))*odd[k];
+        fftArray[k] = even[k] + wn_times_Ok;
+        fftArray[k+N/2] = even[k] - wn_times_Ok;  
     }
 
 }
