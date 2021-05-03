@@ -4,6 +4,15 @@
 #include <iostream>
 #include <iomanip>
 #include<fstream>
+#include <pybind11/pybind11.h>
+
+PYBIND11_MODULE(FT ,m){
+    m.doc() = "pybind11 example plugin"; // optional module docstring
+
+    m.def("dft", &DFT, "A function returns dft");
+
+    m.def("fft", &FFT, "A function returns fft");
+}
 
 #define M_PI 3.14159265358979323846
 
