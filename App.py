@@ -35,15 +35,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
             pass
 
         # Creating warning msg for image-2 size
-        self.size_warning_msg = QMessageBox()
-        self.size_warning_msg.setWindowTitle("Error in Image Size")
-        self.size_warning_msg.setText("The 2 images must have the same size!")
-        self.size_warning_msg.setIcon(QMessageBox.Warning)
-
-        self.number_warning_msg = QMessageBox()
-        self.number_warning_msg.setWindowTitle("Error in selected Images ")
-        self.number_warning_msg.setText("You must select two images at once!")
-        self.number_warning_msg.setIcon(QMessageBox.Warning)
+        
 
         self.loaded_imgs = [0, 0]
         self.ratios = [0, 0]
@@ -82,6 +74,13 @@ class ImagesMixer(QtWidgets.QMainWindow):
             vbox = self.displays[i].getView()
             vbox.setBackgroundColor('#2d2d46')
 
+    def warning_msg_generator(self, title, text):
+        msg = QMessageBox()
+        msg.setWindowTitle(title)
+        msg.setText(text)
+        msg.setIcon(QMessageBox.Warning)
+        return msg.exec_()
+        
     def mixing_sliders_counter(self, i: int):
         self.mixing_sliders[i].valueChanged.connect(lambda: self.mixer())
 
@@ -164,7 +163,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         if len(selected_image[0]) != 2:
             # Showing number of images warning msg and return
-            self.number_warning_msg.exec_()
+            self.warning_msg_generator("Error in selected Images ", "You must select two images at once!")
             return self.browse_imgs()
         # Ignore RGB values; converting to greyscale images
         for i in range(len(selected_image)):
@@ -173,7 +172,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         if self.loaded_imgs[0].shape != self.loaded_imgs[1].shape:
             # Showing size warning msg and return
-            self.size_warning_msg.exec_()
+            self.warning_msg_generator("Error in Image Size", "The 2 images must have the same size!")
             return self.browse_imgs()
         else:
             ## Calculate and store all fourier components for each image at once to be used later##
