@@ -4,15 +4,16 @@ import cv2 as cv
 
 
 class imageDisplay():
+    def __init__(self):
+        self.imgByte = []
+        self.shape = 0
 
     def read(self, imgPath: str):
-
         self.imgByte = cv.cvtColor(
             cv.imread(imgPath), cv.COLOR_BGR2GRAY)
-
         self.shape = self.imgByte.shape
-
-
+        
+        # return self.imgByte
 
     def get_fft(self, data_array: np.ndarray):
         # Fourier transform of given data array
@@ -49,14 +50,13 @@ class imageDisplay():
         '''
         return FFT_list
 
+    def mixing_calculations(self, image1, image2, component1, component2, ratio):
 
-    def mixing(self, image1, image2, component1, component2, ratio):
-
-        self.component1=component1
-        self.component2=component2
-        self.ratios=ratio
-        self.image1=image1
-        self.image2=image2
+        self.component1 = component1
+        self.component2 = component2
+        self.ratios = ratio
+        self.image1 = image1
+        self.image2 = image2
 
         if self.component1 == "Magnitude" and self.component2 == "Phase":
             new_mag = np.add(
@@ -118,5 +118,5 @@ class imageDisplay():
             new_array = np.multiply(new_phase, new_mag)
 
         output = np.real(ifft2(new_array))
-
+        
         return (output)
