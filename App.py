@@ -181,7 +181,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
             if self.Output_menu.currentText() == self.outputs[i]:
                 return self.plotting_img(output_data, self.displays[i+4])
             else:
-                self.displays[i+4].clear()
+                for i in range(2):
+                    self.displays[i+4].clear()
 
     def warning_msg_generator(self, title, text):
         msg = QMessageBox()
