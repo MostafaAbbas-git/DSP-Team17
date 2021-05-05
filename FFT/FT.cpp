@@ -5,56 +5,59 @@
 #include <iomanip>
 #include<fstream>
 #include <pybind11/pybind11.h>
-
-PYBIND11_MODULE(FT ,m){
-    m.doc() = "pybind11 example plugin"; // optional module docstring
-
-    m.def("dft", &DFT, "A function returns dft");
-
-    m.def("fft", &FFT, "A function returns fft");
-}
+#include <pybind11/stl.h>
+#include <pybind11/complex.h>
 
 #define M_PI 3.14159265358979323846
 
 using namespace std;
 
-extern "C"
-{
-    void FFT(vector<complex<double>> & fftArray );
-    vector<complex<double>> DFT(vector<complex<double>> data);
-}
+namespace py = pybind11;
+
+// extern "C"
+// {
+//     void FFT(vector<complex<double>> & fftArray );
+//     vector<complex<double>> DFT(vector<complex<double>> data);
+// }
 
 
-void FFT (vector<complex<double>> & fftArray){
+vector<complex<double>> FFT (vector<complex<double>>  fftArray){
     
     int N = fftArray.size();
 
-    if( N == 1) return;
+    if( N == 1) {
 
-    vector<complex<double>> even,odd;
+        return fftArray;
+    }
+
+
+    vector<complex<double>> even(N/2, 0),odd(N/2,0), fft_Even(N/2,0), fft_Odd(N/2, 0);
 
     // Splitting
     for(int i = 0; i != N/2; i++){
 
-        even.push_back( fftArray[2*i] );
-        odd.push_back(fftArray [2*i +1]);
+        even[i]= ( fftArray[2*i] );
+        odd[i]= (fftArray [2*i +1]);
     } 
 
     /* perform the recursive FFT operations on the splitted even and odd vectors 
     *  to split each of them to another even and odd vectors,
     *  until we have one element only that can't be splitted anymore. 
     */
-    FFT(even);
-    FFT(odd);
+    fft_Even = FFT(even);
+    fft_Odd = FFT(odd);
 
+   vector<complex<double>> frequencyBins (N,0);
     
     // Compining the small vectors to make the final fft array
-    for(int k = 0; k < N/2; k++){
+    for(int k = 0; k != N/2; k++){
         
-        complex<double> wn_times_Ok = (complex<double>(cos(-2*M_PI *k /N),sin(-2*M_PI *k /N)))*odd[k];
-        fftArray[k] = even[k] + wn_times_Ok;
-        fftArray[k+N/2] = even[k] - wn_times_Ok;  
+        complex<double> wn_times_Ok = (complex<double>(cos(-2*M_PI *k /N),sin(-2*M_PI *k /N)))*fft_Odd[k];
+        frequencyBins[k] = fft_Even[k] + wn_times_Ok;
+        frequencyBins[k+N/2] = fft_Even[k] - wn_times_Ok;  
     }
+
+return frequencyBins;
 
 }
 
@@ -88,5 +91,14 @@ vector<complex<double>> DFT(vector<complex<double>> data)
     }
 
     return fftOutput;
+
+}
+
+PYBIND11_MODULE(FT ,m){
+    // m.doc() = "pybind11 example plugin"; // optional module docstring
+    m.def("FFT", &FFT, "A function returns fft");
+
+    m.def("DFT", &DFT, "A function returns dft");
+
 
 }
