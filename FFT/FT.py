@@ -1,57 +1,69 @@
 import FT
+import time
+import numpy as np
+import matplotlib.pyplot as plt
 from numpy.fft import fft
 
 
 path = ['data/data1.txt', 'data/data2.txt', 'data/data3.txt',
         'data/data4.txt', 'data/data5.txt', 'data/data6.txt']
 
-array = []
-
 # arr = [0, 32767]
-arr = [0, 32767, 32767, 32767, 238, -480, 3580, 693]
-         
-
-""" 
-for i in range (len(path)):
-    data = #read with path[i]
-    fft_array = data #bec fft is void function and takes the data by reference
-    #calling lines
-    dft = library.DFT(data)
-    library.FFT(fft_array)
-"""
-data_list = [[], [], [], [], [], []]  # list of lists
+#arr = [0, 32767, 32767, 32767, 238, -480, 3580, 693]
 
 data_list = [[], [], [], [], [], []]  # list of lists
-dft = [[], [], [], [], [], []]
-fft = [[], [], [], [], [], []]
+length = []
 
+meanSquaredError = []
+
+dft_time = []
+fft_time = []
+
+# Reading data of diff lengths
 for i in range(len(path)):
     with open(path[i], 'r') as f:
         for line in f.readlines():
             data_list[i].append(int(line))
 
+
 for i in range(len(data_list)):
-    fft_array = data_list[i]
-    dft[i].append(FT.DFT(data_list[i]))
-    fft[i].append(FT.FFT(fft_array))
 
-for i in range(10):
-    dft = FT.DFT(data_list[0])
-    print('dft', dft[i])
+    length.append(len(data_list[i]))
 
-for i in range(10):
-    dft = FT.FFT(data_list[0])
-    print('fft', dft[i])
+    # Calling DFT
+    dft_start = time.time()
+    dft_array = FT.DFT(data_list[i])
+    dft_end = time.time()
 
-for i in range(10):
-    x=data_list[0]
-    print(x)
+    dft_time.append(dft_end - dft_start)
+
+    #Calling FFT
+    fft_start = time.time()
+    fft_array = FT.FFT(data_list[i])
+    fft_end = time.time()
+
+    fft_time.append(fft_end - fft_start)
+
+    #calculating the mean squared error
+    dftArray = np.array(dft_array)
+    fftArray = np.array(fft_array)
+    difference = np.subtract(dftArray, fftArray)
+    squared_array = np.square(difference) 
+    meanSquaredError.append(np.abs(squared_array.mean()))
 
 
-# array = FT.DFT(arr)
-# x = fft(arr)
-# y=FT.FFT(arr)
+plot1 = plt.figure(1)
+plt.plot(length,dft_time)
+plt.plot(length,fft_time)
 
-# print(x)
-# print(array)
-# print(y)
+plt.xlabel('N')
+plt.ylabel('time (sec)')
+plt.legend(["DFT", "FFT"])
+
+plot2 = plt.figure(2)
+plt.plot(length, meanSquaredError)
+
+plt.xlabel('N')
+plt.ylabel('Mean squared Error')
+
+plt.show()
