@@ -45,11 +45,7 @@ for i in range(len(data_list)):
     fft_time.append(fft_end - fft_start)
 
     #calculating the mean squared error
-    dftArray = np.array(dft_array)
-    fftArray = np.array(fft_array)
-    difference = np.subtract(dftArray, fftArray)
-    squared_array = np.square(difference) 
-    meanSquaredError.append(np.abs(squared_array.mean()))
+    meanSquaredError.append(np.abs(np.square(np.subtract(dft_array,fft_array)).mean()))
 
 #Plotting
 plt.subplot(1,2,1)
