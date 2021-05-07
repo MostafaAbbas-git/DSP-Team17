@@ -14,13 +14,6 @@ using namespace std;
 
 namespace py = pybind11;
 
-// extern "C"
-// {
-//     void FFT(vector<complex<double>> & fftArray );
-//     vector<complex<double>> DFT(vector<complex<double>> data);
-// }
-
-
 vector<complex<double>> FFT (vector<complex<double>>  fftArray){
     
     int N = fftArray.size();
@@ -95,7 +88,7 @@ vector<complex<double>> DFT(vector<complex<double>> data)
 }
 
 PYBIND11_MODULE(FT ,m){
-    // m.doc() = "pybind11 example plugin"; // optional module docstring
+    
     m.def("FFT", &FFT, "A function returns fft");
 
     m.def("DFT", &DFT, "A function returns dft");

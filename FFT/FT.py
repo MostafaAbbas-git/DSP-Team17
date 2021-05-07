@@ -51,19 +51,22 @@ for i in range(len(data_list)):
     squared_array = np.square(difference) 
     meanSquaredError.append(np.abs(squared_array.mean()))
 
-
-plot1 = plt.figure(1)
+#Plotting
+plt.subplot(1,2,1)
 plt.plot(length,dft_time)
 plt.plot(length,fft_time)
 
 plt.xlabel('N')
 plt.ylabel('time (sec)')
+plt.title('Time Complexity')
 plt.legend(["DFT", "FFT"])
 
-plot2 = plt.figure(2)
+plt.subplot(1,2,2)
 plt.plot(length, meanSquaredError)
 
 plt.xlabel('N')
 plt.ylabel('Mean squared Error')
+plt.title('Error')
 
+plt.tight_layout()
 plt.show()
