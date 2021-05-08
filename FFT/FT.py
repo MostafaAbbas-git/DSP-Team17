@@ -2,14 +2,12 @@ import FT
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy.fft import fft
+
 
 
 path = ['data/data1.txt', 'data/data2.txt', 'data/data3.txt',
         'data/data4.txt', 'data/data5.txt', 'data/data6.txt']
 
-# arr = [0, 32767]
-#arr = [0, 32767, 32767, 32767, 238, -480, 3580, 693]
 
 data_list = [[], [], [], [], [], []]  # list of lists
 length = []
@@ -48,15 +46,18 @@ for i in range(len(data_list)):
     meanSquaredError.append(np.abs(np.square(np.subtract(dft_array,fft_array)).mean()))
 
 #Plotting
+
+#Time complexity
 plt.subplot(1,2,1)
 plt.plot(length,dft_time)
 plt.plot(length,fft_time)
 
 plt.xlabel('N')
-plt.ylabel('time (sec)')
+plt.ylabel('time')
 plt.title('Time Complexity')
 plt.legend(["DFT", "FFT"])
 
+#Error
 plt.subplot(1,2,2)
 plt.plot(length, meanSquaredError)
 
