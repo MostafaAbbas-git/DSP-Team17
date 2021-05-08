@@ -12,12 +12,16 @@ class imageDisplay():
         self.imgByte = cv.cvtColor(
             cv.imread(imgPath), cv.COLOR_BGR2GRAY)
         self.shape = self.imgByte.shape
-        
+
         # return self.imgByte
 
-    def get_fft(self, data_array: np.ndarray):
+    def plotting_img(self, data, viewer):
+        viewer.setImage(data.T)
+        viewer.show()
+
+    def get_fft(self, data: np.ndarray):
         # Fourier transform of given data array
-        fft_data = fft2(data_array)
+        fft_data = fft2(data)
         # shifting the array of data
         fft_data_shifted = np.fft.fftshift(fft_data)
         # separate the magnitude
@@ -32,23 +36,21 @@ class imageDisplay():
         fft_real_spectrum = 20*np.log(np.real(fft_data_shifted))
         # separate the imaginary components
         fft_data_imag = np.imag(fft_data)
-        # The Discrete Fourier Transform sample frequencies
-        sample_freq = fftfreq(fft_data.size)
 
         FFT_mixinglist = [fft_data_mag, fft_data_phase,
-                          fft_data_real, fft_data_imag, sample_freq]
+                          fft_data_real, fft_data_imag]
         # list of lists holds all calculated values
         FFT_displayComponents = [fft_mag_spectrum, fft_data_phase,
-                                 fft_real_spectrum, fft_data_imag, sample_freq]
+                                 fft_real_spectrum, fft_data_imag]
 
-        FFT_list = [FFT_mixinglist, FFT_displayComponents]
+        FFT_lists = [FFT_mixinglist, FFT_displayComponents]
         '''
         return a list that contains 2 lists
-        FFT_list[0] is fourier components without any shift or multiplying by log
-        FFT_list[1] contains the magnitude and real spectrum with the rest of components, 
-        that are neaded in the component display.
+        FFT_list[0] == FFT_mixinglist ->  is a list of fourier components without any shift or multiplying by 20log.
+        FFT_list[1] == FFT_displayComponents -> contains the magnitude and real spectrum with the rest of components,
+        that are needed in the component display.
         '''
-        return FFT_list
+        return FFT_lists
 
     def mixing_calculations(self, image1, image2, component1, component2, ratio):
 
@@ -57,6 +59,12 @@ class imageDisplay():
         self.ratios = ratio
         self.image1 = image1
         self.image2 = image2
+        
+        zeros_array = np.zeros(self.image2[0][1].shape)
+        ones_array = np.ones(self.image2[0][0].shape)
+        
+        ''' self.image1[0][0] -> Magnitude ,, self.image1[0][1] -> Phase 
+        self.image1[0][2] -> Real ,, self.image1[0][3] -> Imaginary '''
 
         if self.component1 == "Magnitude" and self.component2 == "Phase":
             new_mag = np.add(
@@ -67,7 +75,7 @@ class imageDisplay():
         if self.component1 == "Magnitude" and self.component2 == "Uniform phase":
             new_mag = np.add(
                 self.image1[0][0] * self.ratios[0], self.image2[0][0] * (1 - self.ratios[0]))
-            new_phase = np.zeros(self.image2[0][1].shape)
+            new_phase = zeros_array
 
         if self.component1 == "Phase" and self.component2 == "Magnitude":
             new_mag = np.add(
@@ -76,7 +84,7 @@ class imageDisplay():
                 self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
 
         if self.component1 == "Phase" and self.component2 == "Uniform magnitude":
-            new_mag = np.ones(self.image2[0][0].shape)
+            new_mag = ones_array
             new_phase = np.add(
                 self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
 
@@ -93,23 +101,19 @@ class imageDisplay():
                 self.image1[0][3] * (self.ratios[0]), self.image2[0][3] * (1 - self.ratios[0]))
 
         if self.component1 == "Uniform magnitude" and self.component2 == "Phase":
-            new_mag = np.ones(self.image1[0][0].shape)
+            new_mag = ones_array
             new_phase = np.add((self.image2[0][1] * self.ratios[1]),
                                (self.image1[0][1] * (1 - self.ratios[1])))
 
-        if self.component1 == "Uniform magnitude" and self.component2 == "Uniform phase":
-            new_mag = np.ones(self.image1[0][0].shape)
-            new_phase = np.zeros(self.image2[0][1].shape)
+        if (self.component1 == "Uniform magnitude" and self.component2 == "Uniform phase") or (self.component1 == "Uniform phase" and self.component2 == "Uniform magnitude"):
+            new_mag = ones_array
+            new_phase = zeros_array
 
         if self.component1 == "Uniform phase" and self.component2 == "Magnitude":
             new_mag = np.add(
                 self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
-            new_phase = np.zeros(self.image1[0][1].shape)
-
-        if self.component1 == "Uniform phase" and self.component2 == "Uniform magnitude":
-            new_mag = np.ones(self.image2[0][0].shape)
-            new_phase = np.zeros(self.image1[0][1].shape)
-
+            new_phase = zeros_array
+        
         if self.component1 == "Imaginary" or self.component2 == "Imaginary":
             new_imag = (1j * new_imag)
             new_array = np.add(new_real, new_imag)
@@ -118,5 +122,5 @@ class imageDisplay():
             new_array = np.multiply(new_phase, new_mag)
 
         output = np.real(ifft2(new_array))
-        
+
         return (output)

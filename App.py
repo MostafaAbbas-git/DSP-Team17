@@ -30,14 +30,12 @@ class ImagesMixer(QtWidgets.QMainWindow):
         except:
             pass
 
-        # Creating warning msg for image-2 size
-
         self.loaded_imgs = [0, 0]
         self.ratios = [0, 0]
         self.mixing_sliders = [self.Comp1_Slider, self.Comp2_Slider]
 
-        self.dropMenu = [self.displaySelection_Menu1, self.displaySelection_Menu2, self.Output_menu,
-                         self.Comp1_ImageMenu, self.Comp2_ImageMenu, self.Comp1_Menu, self.Comp2_Menu]
+        self.drop_menus = [self.displaySelection_Menu1, self.displaySelection_Menu2, self.Output_menu,
+                           self.Comp1_ImageMenu, self.Comp2_ImageMenu, self.Comp1_Menu, self.Comp2_Menu]
 
         self.displays = [self.fixedDisplay_1, self.fixedDisplay_2, self.selectedDisplay_1,
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
@@ -52,11 +50,12 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.actionNewWindow.triggered.connect(lambda: self.make_new_window())
         self.actionOpenImgs.triggered.connect(lambda: self.browse_imgs())
 
-        for i in range(2):  # connecting the Sliders
-            self.mixing_sliders_counter(i)
+        for i in range(2):
+            self.mixing_sliders_counter(i)  # connecting the Sliders
+            # Trigger the components drop menus
             self.display_component_counter(i)
 
-        # Update Component2-ComboBox when index of Component1-ComboBox change
+        # Update Component2-ComboBox on the change of Component1-ComboBox selection.
         self.Comp1_Menu.currentIndexChanged.connect(
             lambda: self.update_components_CB())
 
@@ -74,8 +73,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
     # Connecting ComboBoxes of input displays
     def display_component_counter(self, i: int):
-        self.dropMenu[i].currentIndexChanged.connect(
-            lambda: self.display_each_component(self.dropMenu[i], self.displays[i+2], self.imgs_fft_list[i][1]))
+        self.drop_menus[i].currentIndexChanged.connect(
+            lambda: self.display_fft_component(self.drop_menus[i], self.displays[i+2], self.imgs_fft_list[i][1]))
 
     def browse_imgs(self):
         selected_image = QtGui.QFileDialog.getOpenFileNames(
@@ -88,7 +87,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
             logger.info("The user didn't select exactly 2 images")
             return self.browse_imgs()
         # Ignore RGB values; converting to greyscale images
-        for i in range(len(selected_image)):
+        for i in range(2):
             self.loaded_imgs[i] = imageDisplay()
             self.loaded_imgs[i].read(selected_image[0][i])
 
@@ -100,29 +99,24 @@ class ImagesMixer(QtWidgets.QMainWindow):
             return self.browse_imgs()
         else:
             for i in range(2):
-                ## Calculate and store all fourier components for each image at once to be used later##
+                # Calculate and store all fourier components for each image at once to be used later
                 self.imgs_fft_list.append(
                     imageDisplay.get_fft(self, self.loaded_imgs[i].imgByte))
                 # Plot original selected images on input displays
-                self.plotting_img(
-                    self.loaded_imgs[i].imgByte, self.displays[i])
-                logger.info("selection and calculation of fft-components for the two images is done successfully.")
+                imageDisplay.plotting_img(self, self.loaded_imgs[i].imgByte, self.displays[i])
+                logger.info("selection, calculation of fft-components for the two images, and plotting are done successfully.")
 
-    def plotting_img(self, data, viewer):
-        viewer.setImage(data.T)
-        viewer.show()
-
-    def display_each_component(self, menu, display, img_components):
-        # menu represents which combo box is used
+    def display_fft_component(self, menu, viewer, img_components):
+        # menu represents which comboBox is used
         # get the index of the selected component from the combo box ,the comps start from index 1
         selected_option = menu.currentIndex()
 
         if selected_option == 0:
-            display.clear()
+            viewer.clear()
         else:
             # get the required component from the fourier components list
             component = img_components[selected_option-1]
-            self.plotting_img(component, display)
+            imageDisplay.plotting_img(self, component, viewer)
 
     def update_components_CB(self):
         # updating component 1 comboBox will affect the available items of component 2 comboBox
@@ -156,21 +150,21 @@ class ImagesMixer(QtWidgets.QMainWindow):
                     first_img_slot = self.imgs_fft_list[i]
                     second_img_slot = self.imgs_fft_list[j]
         # Return all fft components of each image in separate arrays
-        logger.info(f"Images-ComboBoxes are updated with {self.image_of_component1} and {self.image_of_component2} respectively.")
+        logger.info(
+            f"Images-ComboBoxes are updated with {self.image_of_component1} and {self.image_of_component2} respectively.")
         return [first_img_slot, second_img_slot]
 
     def mixer_panel(self):
-        # Get the latest update of Comp2_Menu_ComboBox
+        # Get the current selection of Component2-comboBox.
         self.component2 = self.Comp2_Menu.currentText()
-        logger.info(f"Components-ComboBoxes are updated with {self.component1} and {self.component2} respectively.")
+        logger.info(
+            f"Components-ComboBoxes are updated with {self.component1} and {self.component2} respectively.")
 
         # Get the current-selected-images components
         self.image1, self.image2 = self.update_images_CB()
 
-        ''' self.image1[0][0] -> Magnitude ,, self.image1[0][1] -> Phase self.image1[0][2] -> Real ,, self.image1[0][3] -> Imaginary '''
-
         for i in range(2):
-            # creating a list that holds the current slider values divided by 100 to be used later with mixing equations
+            # creating a list that holds the current slider values divided by 100 to be used later with mixing equations.
             self.ratios[i] = (self.mixing_sliders[i].value() / 100)
 
         output = imageDisplay()
@@ -179,8 +173,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         for i in range(2):
             if self.Output_menu.currentText() == self.outputs[i]:
-                return self.plotting_img(output_data, self.displays[i+4])
-            else:
+                return imageDisplay.plotting_img(self, output_data, self.displays[i+4])
+            else: 
                 for i in range(2):
                     self.displays[i+4].clear()
 
@@ -201,7 +195,6 @@ class ImagesMixer(QtWidgets.QMainWindow):
         self.new_win.show()
         logger.info("The user created new window")
 
-
     def clear_all_widgets(self):  # Fixed displays are excluded
         self.default()
         for i in range(4):
@@ -211,12 +204,11 @@ class ImagesMixer(QtWidgets.QMainWindow):
     # setting the default values
     def default(self):
         for i in range(7):
-            self.dropMenu[i].setCurrentIndex(0)
+            self.drop_menus[i].setCurrentIndex(0)
 
         value = 100
         for i in range(2):
             self.mixing_sliders[i].setProperty("value", i*value)
-        
 
 
 def main():
