@@ -103,8 +103,10 @@ class ImagesMixer(QtWidgets.QMainWindow):
                 self.imgs_fft_list.append(
                     imageDisplay.get_fft(self, self.loaded_imgs[i].imgByte))
                 # Plot original selected images on input displays
-                imageDisplay.plotting_img(self, self.loaded_imgs[i].imgByte, self.displays[i])
-                logger.info("selection, calculation of fft-components for the two images, and plotting are done successfully.")
+                imageDisplay.plotting_img(
+                    self, self.loaded_imgs[i].imgByte, self.displays[i])
+            logger.info(
+                "selection, calculation of fft-components for the two images, and plotting are done successfully.")
 
     def display_fft_component(self, menu, viewer, img_components):
         # menu represents which comboBox is used
@@ -173,10 +175,10 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         for i in range(2):
             if self.Output_menu.currentText() == self.outputs[i]:
-                return imageDisplay.plotting_img(self, output_data, self.displays[i+4])
-            else: 
-                for i in range(2):
-                    self.displays[i+4].clear()
+                imageDisplay.plotting_img(
+                    self, output_data, self.displays[i+4])
+                logger.info(
+                    f"A mixed image of {self.image_of_component1}.{self.component1} and {self.image_of_component2}.{self.component2} is plotted on {self.displays[i+4].objectName()}.")
 
     def warning_msg_generator(self, title, text):
         msg = QMessageBox()

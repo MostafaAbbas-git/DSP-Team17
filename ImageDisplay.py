@@ -59,10 +59,10 @@ class imageDisplay():
         self.ratios = ratio
         self.image1 = image1
         self.image2 = image2
-        
+
         zeros_array = np.zeros(self.image2[0][1].shape)
         ones_array = np.ones(self.image2[0][0].shape)
-        
+
         ''' self.image1[0][0] -> Magnitude ,, self.image1[0][1] -> Phase 
         self.image1[0][2] -> Real ,, self.image1[0][3] -> Imaginary '''
 
@@ -113,7 +113,7 @@ class imageDisplay():
             new_mag = np.add(
                 self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
             new_phase = zeros_array
-        
+
         if self.component1 == "Imaginary" or self.component2 == "Imaginary":
             new_imag = (1j * new_imag)
             new_array = np.add(new_real, new_imag)
