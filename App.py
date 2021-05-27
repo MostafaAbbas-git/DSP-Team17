@@ -157,11 +157,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
         return [first_img_slot, second_img_slot]
 
     def update_slider_values(self):
-
         for i in range(2):
             # creating a list that holds the current slider values divided by 100 to be used later with mixing equations.
             self.ratios[i] = float(self.mixing_sliders[i].value() / 100)
-
         return self.ratios
 
     def mixer_panel(self):

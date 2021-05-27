@@ -86,42 +86,37 @@ class imageDisplay():
 
     # @ImagesMixer
     def mixer_calculator(self, case: 'Cases', image1, image2, sliderRatios: list):
-        from App import ImagesMixer
-
-        ratios = sliderRatios
-        img1 = image1
-        img2 = image2
 
         # case 1
         if case == Cases.MagandPhase:
-            mag_mix = np.add(img1[0][0] * ratios[0],
-                             img2[0][0] * (1 - ratios[0]))
-            phase_mix = np.add(img2[0][1] * (ratios[1]),
-                               img1[0][1] * (1 - ratios[1]))
+            mag_mix = np.add(image1[0][0] * sliderRatios[0],
+                             image2[0][0] * (1 - sliderRatios[0]))
+            phase_mix = np.add(image2[0][1] * (sliderRatios[1]),
+                               image1[0][1] * (1 - sliderRatios[1]))
 
         # case 2
         if case == Cases.MagandUniPhase:
-            mag_mix = np.add(img1[0][0] * ratios[0],
-                             img2[0][0] * (1 - ratios[0]))
-            phase_mix = np.zeros(img2[0][0].shape)
+            mag_mix = np.add(image1[0][0] * sliderRatios[0],
+                             image2[0][0] * (1 - sliderRatios[0]))
+            phase_mix = np.zeros(image2[0][0].shape)
 
         # case 3
         if case == Cases.UniMagandPhase:
-            mag_mix = np.ones(img2[0][0].shape)  # ones array
-            phase_mix = np.add((img2[0][1] * ratios[1]),
-                               (img1[0][1] * (1 - ratios[1])))
+            mag_mix = np.ones(image2[0][0].shape)  # ones array
+            phase_mix = np.add((image2[0][1] * sliderRatios[1]),
+                               (image1[0][1] * (1 - sliderRatios[1])))
 
         # case 4
         if case == Cases.UniMagandUniPhase:
-            mag_mix = np.ones(img2[0][0].shape)  # ones array
-            phase_mix = np.zeros(img2[0][0].shape)
+            mag_mix = np.ones(image2[0][0].shape)  # ones array
+            phase_mix = np.zeros(image2[0][0].shape)
 
         # case 5
         if case == Cases.RealandImag:
-            real_mix = np.add(img1[0][2] * ratios[0],
-                              img2[0][2] * (1 - ratios[0]))
-            imag_mix = np.add(img2[0][3] * (ratios[1]),
-                              img1[0][3] * (1 - ratios[1]))
+            real_mix = np.add(image1[0][2] * sliderRatios[0],
+                              image2[0][2] * (1 - sliderRatios[0]))
+            imag_mix = np.add(image2[0][3] * (sliderRatios[1]),
+                              image1[0][3] * (1 - sliderRatios[1]))
 
         if case == Cases.RealandImag:
             imag_mix = (1j * imag_mix)
