@@ -32,6 +32,8 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
         self.loaded_imgs = [0, 0]
         self.ratios = [0, 0]
+        self.image1 = []
+        self.image2 = []
         self.mixing_sliders = [self.Comp1_Slider, self.Comp2_Slider]
 
         self.drop_menus = [self.displaySelection_Menu1, self.displaySelection_Menu2, self.Output_menu,
@@ -41,7 +43,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
                          self.selectedDisplay_2, self.output1_Display, self.output2_Display]
 
         self.imgs_fft_list = []
-        self.images = ["Image 1", "Image 2"]
+        self.imagesText = ["Image 1", "Image 2"]
         self.outputs = ["Output 1", "Output 2"]
 
         ## Connecting Buttons ##
@@ -122,7 +124,6 @@ class ImagesMixer(QtWidgets.QMainWindow):
 
     def update_components_CB(self):
         # updating component 1 comboBox will affect the available items of component 2 comboBox
-
         self.component1 = self.Comp1_Menu.currentText()
 
         # first, remove all items from the menu
@@ -145,10 +146,9 @@ class ImagesMixer(QtWidgets.QMainWindow):
         # Get the current selected image from ImageMenucomboBox for each one
         self.image_of_component1 = self.Comp1_ImageMenu.currentText()
         self.image_of_component2 = self.Comp2_ImageMenu.currentText()
-
         for i in range(2):
             for j in range(2):
-                if self.image_of_component1 == self.images[i] and self.image_of_component2 == self.images[j]:
+                if self.image_of_component1 == self.imagesText[i] and self.image_of_component2 == self.imagesText[j]:
                     first_img_slot = self.imgs_fft_list[i]
                     second_img_slot = self.imgs_fft_list[j]
         # Return all fft components of each image in separate arrays
@@ -156,27 +156,30 @@ class ImagesMixer(QtWidgets.QMainWindow):
             f"Images-ComboBoxes are updated with {self.image_of_component1} and {self.image_of_component2} respectively.")
         return [first_img_slot, second_img_slot]
 
-    def mixer_panel(self):
-        # Get the current selection of Component2-comboBox.
-        self.component2 = self.Comp2_Menu.currentText()
-        logger.info(
-            f"Components-ComboBoxes are updated with {self.component1} and {self.component2} respectively.")
-
-        # Get the current-selected-images components
-        self.image1, self.image2 = self.update_images_CB()
+    def update_slider_values(self):
 
         for i in range(2):
             # creating a list that holds the current slider values divided by 100 to be used later with mixing equations.
-            self.ratios[i] = (self.mixing_sliders[i].value() / 100)
+            self.ratios[i] = float(self.mixing_sliders[i].value() / 100)
 
+        return self.ratios
+
+    def mixer_panel(self):
+        # Get the current selection of Component2-comboBox.
+        self.component2 = self.Comp2_Menu.currentText()
+        # Get the current slider values.
+        self.ratios = self.update_slider_values()
+        logger.info(
+            f"Components-ComboBoxes are updated with {self.component1} and {self.component2} respectively.")
+        # Get the current selected images.
+        self.image1, self.image2 = self.update_images_CB()
         output = imageDisplay()
-        output_data = output.mixing_calculations(
-            self.image1, self.image2, self.component1, self.component2, self.ratios)
+        output_data = output.mixer(
+            self.component1, self.component2, self.image1, self.image2, self.ratios)
 
         for i in range(2):
             if self.Output_menu.currentText() == self.outputs[i]:
-                imageDisplay.plotting_img(
-                    self, output_data, self.displays[i+4])
+                output.plotting_img(output_data, self.displays[i+4])
                 logger.info(
                     f"A mixed image of {self.image_of_component1}.{self.component1} and {self.image_of_component2}.{self.component2} is plotted on {self.displays[i+4].objectName()}.")
 

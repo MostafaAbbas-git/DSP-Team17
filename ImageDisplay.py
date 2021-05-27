@@ -1,6 +1,15 @@
 from numpy.fft import fft2, ifft2, fftfreq, fftshift
 import numpy as np
 import cv2 as cv
+import enum
+
+
+class Cases(enum.Enum):
+    MagandPhase = "MagnitudeandPhase"
+    RealandImag = "RealandImaginary"
+    UniMagandPhase = "UniformMagnitudeandPhase"
+    MagandUniPhase = "MagnitudeandUniformPhase"
+    UniMagandUniPhase = "UniformMagnitudeandUniformPhase"
 
 
 class imageDisplay():
@@ -52,75 +61,74 @@ class imageDisplay():
         '''
         return FFT_lists
 
-    def mixing_calculations(self, image1, image2, component1, component2, ratio):
+    def mixer(self, component1, component2, image1, image2, sliderRatios):
+        # this function is made to get current selection of components-comboBoxes and determine the suitable case to call the mixing calculator
 
-        self.component1 = component1
-        self.component2 = component2
-        self.ratios = ratio
-        self.image1 = image1
-        self.image2 = image2
+        if component1 == "Magnitude" or component1 == "Phase":
+            if component2 == "Phase" or component2 == "Magnitude":
+                return (self.mixer_calculator(Cases.MagandPhase, image1, image2, sliderRatios))
+            elif component2 == "Uniform phase":
+                return (self.mixer_calculator(Cases.MagandUniPhase, image1, image2, sliderRatios))
+            else:
+                return (self.mixer_calculator(Cases.UniMagandPhase, image1, image2, sliderRatios))
 
-        zeros_array = np.zeros(self.image2[0][1].shape)
-        ones_array = np.ones(self.image2[0][0].shape)
+        if component1 == "Uniform magnitude" or component1 == "Uniform phase":
+            if component2 == "Uniform phase" or component2 == "Uniform magnitude":
+                return (self.mixer_calculator(Cases.UniMagandUniPhase, image1, image2, sliderRatios))
+            elif component2 == "Phase":
+                return (self.mixer_calculator(Cases.UniMagandPhase, image1, image2, sliderRatios))
+            else:
+                return (self.mixer_calculator(Cases.MagandUniPhase, image1, image2, sliderRatios))
 
-        ''' self.image1[0][0] -> Magnitude ,, self.image1[0][1] -> Phase 
-        self.image1[0][2] -> Real ,, self.image1[0][3] -> Imaginary '''
+        if component1 == "Real" or component1 == "Imaginary":
+            if component2 == "Imaginary" or component2 == "Real":
+                return (self.mixer_calculator(Cases.RealandImag, image1, image2, sliderRatios))
 
-        if self.component1 == "Magnitude" and self.component2 == "Phase":
-            new_mag = np.add(
-                self.image1[0][0] * self.ratios[0], self.image2[0][0] * (1 - self.ratios[0]))
-            new_phase = np.add(
-                self.image2[0][1] * (self.ratios[1]), self.image1[0][1] * (1 - self.ratios[1]))
+    # @ImagesMixer
+    def mixer_calculator(self, case: 'Cases', image1, image2, sliderRatios: list):
+        from App import ImagesMixer
 
-        if self.component1 == "Magnitude" and self.component2 == "Uniform phase":
-            new_mag = np.add(
-                self.image1[0][0] * self.ratios[0], self.image2[0][0] * (1 - self.ratios[0]))
-            new_phase = zeros_array
+        ratios = sliderRatios
+        img1 = image1
+        img2 = image2
 
-        if self.component1 == "Phase" and self.component2 == "Magnitude":
-            new_mag = np.add(
-                self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
-            new_phase = np.add(
-                self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
+        # case 1
+        if case == Cases.MagandPhase:
+            mag_mix = np.add(img1[0][0] * ratios[0],
+                             img2[0][0] * (1 - ratios[0]))
+            phase_mix = np.add(img2[0][1] * (ratios[1]),
+                               img1[0][1] * (1 - ratios[1]))
 
-        if self.component1 == "Phase" and self.component2 == "Uniform magnitude":
-            new_mag = ones_array
-            new_phase = np.add(
-                self.image1[0][1] * (self.ratios[0]), self.image2[0][1] * (1 - self.ratios[0]))
+        # case 2
+        if case == Cases.MagandUniPhase:
+            mag_mix = np.add(img1[0][0] * ratios[0],
+                             img2[0][0] * (1 - ratios[0]))
+            phase_mix = np.zeros(img2[0][0].shape)
 
-        if self.component1 == "Real" and self.component2 == "Imaginary":
-            new_real = np.add(
-                self.image1[0][2] * self.ratios[0], self.image2[0][2] * (1 - self.ratios[0]))
-            new_imag = np.add(
-                self.image2[0][3] * (self.ratios[1]), self.image1[0][3] * (1 - self.ratios[1]))
+        # case 3
+        if case == Cases.UniMagandPhase:
+            mag_mix = np.ones(img2[0][0].shape)  # ones array
+            phase_mix = np.add((img2[0][1] * ratios[1]),
+                               (img1[0][1] * (1 - ratios[1])))
 
-        if self.component1 == "Imaginary" and self.component2 == "Real":
-            new_real = np.add(
-                self.image2[0][2] * self.ratios[1], self.image1[0][2] * (1 - self.ratios[1]))
-            new_imag = np.add(
-                self.image1[0][3] * (self.ratios[0]), self.image2[0][3] * (1 - self.ratios[0]))
+        # case 4
+        if case == Cases.UniMagandUniPhase:
+            mag_mix = np.ones(img2[0][0].shape)  # ones array
+            phase_mix = np.zeros(img2[0][0].shape)
 
-        if self.component1 == "Uniform magnitude" and self.component2 == "Phase":
-            new_mag = ones_array
-            new_phase = np.add((self.image2[0][1] * self.ratios[1]),
-                               (self.image1[0][1] * (1 - self.ratios[1])))
+        # case 5
+        if case == Cases.RealandImag:
+            real_mix = np.add(img1[0][2] * ratios[0],
+                              img2[0][2] * (1 - ratios[0]))
+            imag_mix = np.add(img2[0][3] * (ratios[1]),
+                              img1[0][3] * (1 - ratios[1]))
 
-        if (self.component1 == "Uniform magnitude" and self.component2 == "Uniform phase") or (self.component1 == "Uniform phase" and self.component2 == "Uniform magnitude"):
-            new_mag = ones_array
-            new_phase = zeros_array
-
-        if self.component1 == "Uniform phase" and self.component2 == "Magnitude":
-            new_mag = np.add(
-                self.image2[0][0] * self.ratios[1], self.image1[0][0] * (1 - self.ratios[1]))
-            new_phase = zeros_array
-
-        if self.component1 == "Imaginary" or self.component2 == "Imaginary":
-            new_imag = (1j * new_imag)
-            new_array = np.add(new_real, new_imag)
+        if case == Cases.RealandImag:
+            imag_mix = (1j * imag_mix)
+            new_array = np.add(real_mix, imag_mix)
         else:
-            new_phase = np.exp(1j * new_phase)
-            new_array = np.multiply(new_phase, new_mag)
+            phase_mix = np.exp(1j * phase_mix)
+            new_array = np.multiply(phase_mix, mag_mix)
 
         output = np.real(ifft2(new_array))
-
-        return (output)
+        return output  # -> ndarray
