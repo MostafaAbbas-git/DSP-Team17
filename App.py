@@ -77,6 +77,7 @@ class ImagesMixer(QtWidgets.QMainWindow):
             lambda: self.display_fft_component(self.drop_menus[i], self.displays[i+2], self.imgs_fft_list[i][1]))
 
     def browse_imgs(self):
+        self.clear_all_widgets()
         selected_image = QtGui.QFileDialog.getOpenFileNames(
             self, 'Select image', os.getenv('HOME'), "Images (*.png *.xpm *.jpg)")
 

@@ -44,12 +44,7 @@ class imageDisplay():
                                  fft_real_spectrum, fft_data_imag]
 
         FFT_lists = [FFT_mixinglist, FFT_displayComponents]
-        '''
-        return a list that contains 2 lists
-        FFT_list[0] == FFT_mixinglist ->  is a list of fourier components without any shift or multiplying by 20log.
-        FFT_list[1] == FFT_displayComponents -> contains the magnitude and real spectrum with the rest of components,
-        that are needed in the component display.
-        '''
+        
         return FFT_lists
 
     def mixing_calculations(self, image1, image2, component1, component2, ratio):
